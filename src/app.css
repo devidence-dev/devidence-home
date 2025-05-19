@@ -1,79 +1,110 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --bgColor: #223344;
+  --bgColor2: #090a0f;
+  --accentColor: #FFF;
+  --font: 'Karla', sans-serif;
+  --delay: .3s;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  background: linear-gradient(to bottom, var(--bgColor), var(--bgColor2));
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
   min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Parallax Background */
+.background-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -10;
 }
 
-.card {
-  padding: 2em;
+.parallax-background {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  z-index: -10;
+  top: -5%;
+  left: -5%;
+}
+
+.object1 {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: stars linear infinite;
+  animation-duration: 50s;
+  background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 90px 40px, #fff, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+.object2 {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: stars linear infinite;
+  animation-duration: 100s;
+  background-image: radial-gradient(1px 1px at 100px 50px, #eee, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 150px 82px, #fff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 50px 140px, #ddd, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 300px 300px;
+}
+
+.object3 {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: stars linear infinite;
+  animation-duration: 150s;
+  background-image: radial-gradient(1px 1px at 150px 150px, #ccc, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 250px 250px, #fff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 300px 300px, #fff, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 400px 400px;
+}
+
+@keyframes stars {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(1000px);
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.badge {
+  height: 0.6em;
+  margin: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.spacing {
+  padding: 0 10px;
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  width: 100%;
+  height: 100%;
 }

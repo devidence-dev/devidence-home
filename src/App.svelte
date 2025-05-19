@@ -1,47 +1,60 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  import { onMount } from 'svelte';
+  import { initializeBackground, setupButtonTracking } from './lib/animations.js';
+  import Footer from './lib/Footer.svelte';
+  import SocialButton from './lib/SocialButton.svelte';
+  import Background from './lib/Background.svelte';
+  import Profile from './lib/Profile.svelte';
+
+  // Las rutas correctas para los recursos
+  const devidenceLogo = './images/devidence-logo.png';
+  const githubSvg = './svg/github.svg';
+  const mediumSvg = './svg/medium.svg';
+
+  onMount(() => {
+    // Inicializar el fondo de estrellas y el seguimiento de botones
+    initializeBackground();
+    setupButtonTracking();
+  });
 </script>
 
 <main>
-  <div>
-    <a href="https://vite.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
+  <!-- Fondo con animación de estrellas -->
+  <Background />
+
+  <div class="container">
+    <div class="row">
+      <div class="column" style="margin-top: 5%">
+        <!-- Perfil con avatar y descripción -->
+        <Profile 
+          avatarSrc={devidenceLogo} 
+          name="devidence" 
+          description="🐢 Espol - 🐧 Linux - ♥ Dogs - 📱 Geek - 🛡️ DevSecOps" 
+          verified={true} 
+        />
+        
+        <!-- Botones sociales -->
+        <SocialButton id="1" url="https://medium.com/@devidence" iconSrc={mediumSvg} text="Medium" className="button-medium" delay={1} />
+        <SocialButton id="2" url="https://github.com/devidence-dev" iconSrc={githubSvg} text="Github" className="button-github" delay={2} />
+        
+        <div class="container">
+          <Footer />
+        </div>
+      </div>
+    </div>
   </div>
-  <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
 </main>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
+  /* Incluimos estilos locales específicos del componente aquí si los necesitamos */
+  :global(.badge) {
+    height: 0.6em;
+    margin: 5px;
+    display: inline-block;
+    vertical-align: middle;
   }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
+  
+  :global(span.copy-icon) {
+    cursor: pointer;
   }
 </style>

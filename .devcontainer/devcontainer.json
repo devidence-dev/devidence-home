@@ -1,0 +1,15 @@
+{
+  "name": "Svelte Vite DevContainer",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:dev-22-bookworm",
+  "features": {},
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "svelte.svelte-vscode",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+  "postCreateCommand": "npm install"
+}

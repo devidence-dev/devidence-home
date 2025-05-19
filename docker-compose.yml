@@ -1,0 +1,44 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: devidence-home
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    # Memory limits
+    mem_limit: 256M
+    mem_reservation: 128M
+    # CPU limits
+    cpus: 0.5
+    # Security settings
+    security_opt:
+      - no-new-privileges:true
+    # Add more security with seccomp
+    # Uncomment when you have a seccomp profile ready
+    # security_opt:
+    #   - seccomp:seccomp-profile.json
+    # Drop capabilities
+    cap_drop:
+      - ALL
+    # Add only necessary capabilities
+    cap_add:
+      - NET_BIND_SERVICE
+      - CHOWN
+      - SETGID
+      - SETUID
+    # Read-only root filesystem
+    read_only: true
+    volumes:
+      # Ensure these directories exist on the host with proper permissions (777)
+      - ${NGINX_VOLUME_PATH}/nginx/logs:/var/log/nginx:rw
+      - ${NGINX_VOLUME_PATH}/nginx/cache:/var/cache/nginx:rw
+    # Mount temporary filesystem for writable directories
+    tmpfs:
+      - /tmp:exec,mode=1777
+      - /var/run:exec,mode=1777
+      - /run:exec,mode=1777
+    # Run as root initially (nginx will drop privileges as configured)
+    user: root
+    

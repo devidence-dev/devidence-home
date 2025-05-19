@@ -6,8 +6,17 @@
   import Background from './lib/Background.svelte';
   import Profile from './lib/Profile.svelte';
 
+  let devidenceLogo = './images/devidence-logo.webp';
+  let fallbackLogo = './images/devidence-logo.png';
+  let currentLogo = devidenceLogo;
+
+  function handleLogoError() {
+    if (currentLogo !== fallbackLogo) {
+      currentLogo = fallbackLogo;
+    }
+  }
+
   // Las rutas correctas para los recursos
-  const devidenceLogo = './images/devidence-logo.png';
   const githubSvg = './svg/github.svg';
   const mediumSvg = './svg/medium.svg';
 
@@ -24,20 +33,21 @@
 
   <div class="container">
     <div class="row">
-      <div class="column" style="margin-top: 5%">
+      <div class="column" style="margin-top: 5vh">
         <!-- Perfil con avatar y descripción -->
         <Profile 
-          avatarSrc={devidenceLogo} 
+          avatarSrc={currentLogo} 
           name="devidence" 
-          description="🐢 Espol - 🐧 Linux - ♥ Dogs - 📱 Geek - 🛡️ DevSecOps" 
+          description="🐢 Espol - 🐧 Linux - 📱 Geek - 🛡️ DevSecOps" 
           verified={true} 
+          on:avatarError={handleLogoError}
         />
         
         <!-- Botones sociales -->
         <SocialButton id="1" url="https://medium.com/@devidence" iconSrc={mediumSvg} text="Medium" className="button-medium" delay={1} />
         <SocialButton id="2" url="https://github.com/devidence-dev" iconSrc={githubSvg} text="Github" className="button-github" delay={2} />
         
-        <div class="container">
+        <div class="container footer-container">
           <Footer />
         </div>
       </div>
@@ -56,5 +66,22 @@
   
   :global(span.copy-icon) {
     cursor: pointer;
+  }
+  
+  /* Ajustes para mejorar el centrado vertical */
+  :global(body), :global(html) {
+    height: 100%;
+  }
+  
+  main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .footer-container {
+    margin-top: auto;
+    padding-top: 2rem;
   }
 </style>

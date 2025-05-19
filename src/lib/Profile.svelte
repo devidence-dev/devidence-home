@@ -3,10 +3,15 @@
   export let name;
   export let description;
   export let verified = true;
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+  function handleImgError() {
+    dispatch('avatarError');
+  }
 </script>
 
 <!-- Imagen de perfil -->
-<img alt="avatar" id="avatar" class="rounded-avatar fadein" src={avatarSrc} height="128px" width="128px" style="object-fit: cover;">
+<img alt="avatar" id="avatar" class="rounded-avatar fadein" src={avatarSrc} height="128px" width="128px" style="object-fit: cover;" on:error={handleImgError}>
 
 <!-- Nombre con badge de verificación (opcional) -->
 <h1 class="fadein dynamic-contrast">

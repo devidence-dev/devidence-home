@@ -1,47 +1,105 @@
-# Svelte + Vite
+# Devidence Home Landing Page
 
-This template should help get you started developing with Svelte in Vite.
+An elegant landing page inspired by the Galaxy theme from LinkStack, developed with Svelte and Vite. This page features a minimalist interface with an animated starry background, ideal for showcasing personal or professional links.
 
-## Recommended IDE Setup
+![Devidence Preview](public/images/devidence-logo.png)
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+## 🌟 Features
 
-## Need an official Svelte framework?
+- Modern design inspired by the Galaxy theme from LinkStack
+- Animated starry background
+- Central profile with photo and verification
+- Custom social media buttons
+- Fully responsive
+- Parallax background effect
+- Footer links
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+## 🛠️ Technologies Used
 
-## Technical considerations
+- [Svelte](https://svelte.dev/) - Framework for building user interfaces
+- [Vite](https://vitejs.dev/) - Frontend development tool
+- Custom CSS for animations and styles
+- Docker for production deployment
 
-**Why use this over SvelteKit?**
+## 💻 Prerequisites
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) (for deployment)
 
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+## 🚀 Installation and Usage
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+### Local Development
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+1. Clone this repository
+   ```bash
+   git clone https://github.com/devidence-dev/devidence-home.git
+   cd devidence-home
+   ```
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+2. Install dependencies
+   ```bash
+   npm install
+   ```
 
-**Why include `.vscode/extensions.json`?**
+3. Start the development server
+   ```bash
+   npm run dev
+   ```
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+4. Open your browser at [http://localhost:5173](http://localhost:5173)
 
-**Why enable `checkJs` in the JS template?**
+### Build for Production
 
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/sveltejs/svelte-hmr/tree/master/packages/svelte-hmr#preservation-of-local-state).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+```bash
+npm run build
 ```
+
+The generated files will be in the `dist` directory.
+
+## 🐳 Deployment with Docker
+
+The project includes Docker configuration with security hardening measures.
+
+1. Build and run with Docker Compose:
+   ```bash
+   docker-compose up -d
+   ```
+
+2. Access the application at [http://localhost:8080](http://localhost:8080)
+
+### Security Features
+
+- Multi-stage build to reduce final image size
+- Run as a non-privileged user
+- Read-only file system
+- Hardened Nginx configuration
+- Container with limited capabilities
+- Configured HTTP security headers
+
+## 🎨 Customization
+
+To customize the page:
+
+1. Modify the texts and links in `src/lib/Profile.svelte`
+2. Change the logo in `public/images/`
+3. Adjust colors and styles in `src/app.css` and CSS files in `src/assets/styles/`
+4. Configure social buttons in `src/lib/SocialButton.svelte`
+
+## 🔒 Security
+
+This project implements multiple layers of security:
+
+- HTTP security headers (CSP, X-Frame-Options, etc.)
+- Hardened Docker container
+- Run as a non-privileged user
+- Principle of least privilege applied
+
+## License 🔒
+
+Pablo Pin - devidence.dev ©
+
+## 🙏 Acknowledgments
+
+- Inspired by the [Galaxy](https://github.com/LinkStackOrg/LinkStack/tree/main/themes/galaxy) theme from LinkStack
+- devidence.dev ©

@@ -10,8 +10,6 @@ services:
       resources:
         limits:
           cpus: "0.5"
-          memory: 256M
-        reservations:
           memory: 128M
     # Security settings
     security_opt:
@@ -36,9 +34,13 @@ services:
       - /tmp:exec,mode=1777
       - /var/run:exec,mode=1777
       - /run:exec,mode=1777
-      - /var/cache/nginx:exec,mode=755
-    # Run as root (nginx drops to nginx user as configured)
-    user: root
+      - /var/cache/nginx/client_temp:exec,mode=755,uid=101,gid=101
+      - /var/cache/nginx/proxy_temp:exec,mode=755,uid=101,gid=101
+      - /var/cache/nginx/fastcgi_temp:exec,mode=755,uid=101,gid=101
+      - /var/cache/nginx/uwsgi_temp:exec,mode=755,uid=101,gid=101
+      - /var/cache/nginx/scgi_temp:exec,mode=755,uid=101,gid=101
+    # Run as nginx user (non-privileged, UID 101)
+    user: "101:101"
     # Logging configuration
     logging:
       driver: json-file

@@ -39,13 +39,10 @@ RUN npm run build
 # Stage 2: Production
 FROM nginx:1.28.1-alpine3.23
 
-# Create a non-root user for running the application
-RUN addgroup -g 1000 appgroup && \
-    adduser -u 1000 -G appgroup -s /bin/sh -D appuser && \
-    # Create directories with proper permissions for tmpfs mounts
-    mkdir -p /var/cache/nginx/client_temp /var/cache/nginx/proxy_temp && \
+# Prepare nginx directories (nginx user already exists in base image)
+RUN mkdir -p /var/cache/nginx/client_temp /var/cache/nginx/proxy_temp && \
     mkdir -p /var/cache/nginx/fastcgi_temp /var/cache/nginx/uwsgi_temp /var/cache/nginx/scgi_temp && \
-    # Remove default nginx config
+    chown -R nginx:nginx /var/cache/nginx && \
     rm -f /etc/nginx/conf.d/default.conf
 
 # Copy build files from the build stage
@@ -78,9 +75,8 @@ RUN sed -i 's/user  nginx;/user  nginx;/' /etc/nginx/nginx.conf && \
 # Expose port 8080 (non-privileged)
 EXPOSE 8080
 
-# Keep root user to allow nginx entrypoint scripts to work
-# Nginx will drop privileges to appuser as configured
-USER root
+# Run as nginx user (non-privileged)
+USER nginx
 
 # Run nginx in non-daemon mode
 CMD ["nginx", "-g", "daemon off;"]

@@ -5,13 +5,14 @@ services:
       dockerfile: Dockerfile
     container_name: devidence-home
     restart: unless-stopped
-    ports:
-      - "8080:8080"
-    # Memory limits
-    mem_limit: 256M
-    mem_reservation: 128M
-    # CPU limits
-    cpus: 0.5
+    # Resource limits using deploy (recommended for production)
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+        reservations:
+          memory: 128M
     # Security settings
     security_opt:
       - no-new-privileges:true
@@ -30,15 +31,18 @@ services:
       - SETUID
     # Read-only root filesystem
     read_only: true
-    volumes:
-      # Ensure these directories exist on the host with proper permissions (777)
-      - ${NGINX_VOLUME_PATH}/nginx/logs:/var/log/nginx:rw
-      - ${NGINX_VOLUME_PATH}/nginx/cache:/var/cache/nginx:rw
     # Mount temporary filesystem for writable directories
     tmpfs:
       - /tmp:exec,mode=1777
       - /var/run:exec,mode=1777
       - /run:exec,mode=1777
-    # Run as root initially (nginx will drop privileges as configured)
+      - /var/cache/nginx:exec,mode=755
+    # Run as root (nginx drops to nginx user as configured)
     user: root
+    # Logging configuration
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     

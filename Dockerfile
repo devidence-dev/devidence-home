@@ -1,6 +1,6 @@
 # Dockerfile
 # Stage 1: Build
-FROM node:24.13.0-alpine3.23 AS builder
+FROM oven/bun:1.3.10-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -14,10 +14,10 @@ RUN addgroup --system appgroup && \
 USER appuser
 
 # Copy package files
-COPY --chown=appuser:appgroup package*.json ./
+COPY --chown=appuser:appgroup package.json bun.lock ./
 
 # Install dependencies
-RUN npm ci
+RUN bun install --frozen-lockfile
 
 # Install cwebp and ImageMagick for image and favicon conversion
 USER root
@@ -34,49 +34,30 @@ RUN find public/images \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \)
 RUN convert public/images/devidence-logo.png -resize 256x256,128x128,64x64,32x32,16x16 public/favicon.ico
 
 # Build the application
-RUN npm run build
+RUN bun run build
 
 # Stage 2: Production
-FROM nginx:1.28.1-alpine3.23
-
-# Prepare nginx directories (nginx user already exists in base image)
-RUN mkdir -p /var/cache/nginx/client_temp /var/cache/nginx/proxy_temp && \
-    mkdir -p /var/cache/nginx/fastcgi_temp /var/cache/nginx/uwsgi_temp /var/cache/nginx/scgi_temp && \
-    chown -R nginx:nginx /var/cache/nginx && \
-    rm -f /etc/nginx/conf.d/default.conf
+FROM caddy:2.11.2-alpine
 
 # Copy build files from the build stage
-COPY --from=builder --chown=nginx:nginx /app/dist /usr/share/nginx/html
+COPY --from=builder --chown=caddy:caddy /app/dist /srv
+COPY --from=builder --chown=caddy:caddy /app/public/images/*.webp /srv/images/
+COPY --from=builder --chown=caddy:caddy /app/public/favicon.ico /srv/
 
-# Copy webp images to nginx html directory
-COPY --from=builder --chown=nginx:nginx /app/public/images/*.webp /usr/share/nginx/html/images/
+# Copy Caddyfile
+COPY --chown=caddy:caddy Caddyfile /etc/caddy/Caddyfile
 
-# Copy favicon.ico to nginx html directory
-COPY --from=builder --chown=nginx:nginx /app/public/favicon.ico /usr/share/nginx/html/
-
-# Copy custom nginx configuration
-COPY --chown=nginx:nginx nginx/default.conf /etc/nginx/conf.d/default.conf
-
-# Security hardening
-RUN chmod -R 755 /usr/share/nginx/html && \
-    chmod 755 /etc/nginx/conf.d/default.conf && \
-    # Remove unnecessary tools
-    apk --no-cache del curl wget && \
+# Remove file capabilities from caddy binary (not needed on port 8080,
+# and incompatible with no-new-privileges:true in docker-compose)
+RUN apk add --no-cache libcap && \
+    setcap -r /usr/bin/caddy && \
+    apk del libcap && \
     rm -rf /var/cache/apk/*
-
-# Configure nginx to run as nginx user (already exists in base image)
-RUN sed -i 's/user  nginx;/user  nginx;/' /etc/nginx/nginx.conf && \
-    # Configure PID file location for non-root user
-    sed -i 's|pid /var/run/nginx.pid;|pid /tmp/nginx.pid;|' /etc/nginx/nginx.conf || \
-    echo 'pid /tmp/nginx.pid;' > /etc/nginx/conf.d/pid.conf && \
-    # Give nginx user ownership of necessary directories
-    chown -R nginx:nginx /usr/share/nginx/html /var/cache/nginx
 
 # Expose port 8080 (non-privileged)
 EXPOSE 8080
 
-# Run as nginx user (non-privileged)
-USER nginx
+# Run as caddy user (non-privileged)
+USER caddy
 
-# Run nginx in non-daemon mode
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]

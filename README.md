@@ -18,13 +18,14 @@ An elegant landing page inspired by the Galaxy theme from LinkStack, developed w
 
 - [Svelte](https://svelte.dev/) - Framework for building user interfaces
 - [Vite](https://vitejs.dev/) - Frontend development tool
+- [Bun](https://bun.sh/) - JavaScript runtime and package manager
+- [Caddy](https://caddyserver.com/) - Web server for production
 - Custom CSS for animations and styles
 - Docker for production deployment
 
 ## 💻 Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18 or higher)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [Bun](https://bun.sh/) (v1.3 or higher)
 - [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) (for deployment)
 
 ## 🚀 Installation and Usage
@@ -39,12 +40,12 @@ An elegant landing page inspired by the Galaxy theme from LinkStack, developed w
 
 2. Install dependencies
    ```bash
-   npm install
+   bun install
    ```
 
 3. Start the development server
    ```bash
-   npm run dev
+   bun run dev
    ```
 
 4. Open your browser at [http://localhost:5173](http://localhost:5173)
@@ -52,7 +53,7 @@ An elegant landing page inspired by the Galaxy theme from LinkStack, developed w
 ### Build for Production
 
 ```bash
-npm run build
+bun run build
 ```
 
 The generated files will be in the `dist` directory.
@@ -73,7 +74,7 @@ The project includes Docker configuration with security hardening measures.
 - Multi-stage build to reduce final image size
 - Run as a non-privileged user
 - Read-only file system
-- Hardened Nginx configuration
+- Caddy web server with hardened configuration
 - Container with limited capabilities
 - Configured HTTP security headers
 

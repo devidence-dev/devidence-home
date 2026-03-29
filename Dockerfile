@@ -1,6 +1,6 @@
 # Dockerfile
 # Stage 1: Build
-FROM oven/bun:1.3.10-alpine AS builder
+FROM oven/bun:1.3.11-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -38,6 +38,9 @@ RUN bun run build
 
 # Stage 2: Production
 FROM caddy:2.11.2-alpine
+
+# Upgrade Alpine packages to get latest security patches (fixes zlib CVEs)
+RUN apk upgrade --no-cache
 
 # Copy build files from the build stage
 COPY --from=builder --chown=caddy:caddy /app/dist /srv

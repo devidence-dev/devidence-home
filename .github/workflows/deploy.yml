@@ -131,6 +131,7 @@ jobs:
         env:
           HOMELAB_DEPLOY_TOKEN: ${{ secrets.HOMELAB_DEPLOY_TOKEN }}
         run: |
+          rm -rf /tmp/homelab-devidence-home-deploy
           git clone https://x-access-token:${HOMELAB_DEPLOY_TOKEN}@github.com/devidence-dev/homelab.git /tmp/homelab-devidence-home-deploy
           cd /tmp/homelab-devidence-home-deploy
           sed -i "s|tag: .*|tag: \"${{ needs.version.outputs.tag }}\"|" \

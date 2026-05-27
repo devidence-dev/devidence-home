@@ -43,12 +43,12 @@ FROM caddy:2.11.3-alpine
 RUN apk upgrade --no-cache
 
 # Copy build files from the build stage
-COPY --from=builder --chown=caddy:caddy /app/dist /srv
-COPY --from=builder --chown=caddy:caddy /app/public/images/*.webp /srv/images/
-COPY --from=builder --chown=caddy:caddy /app/public/favicon.ico /srv/
+COPY --from=builder --chown=1000:1000 /app/dist /srv
+COPY --from=builder --chown=1000:1000 /app/public/images/*.webp /srv/images/
+COPY --from=builder --chown=1000:1000 /app/public/favicon.ico /srv/
 
 # Copy Caddyfile
-COPY --chown=caddy:caddy Caddyfile /etc/caddy/Caddyfile
+COPY --chown=1000:1000 Caddyfile /etc/caddy/Caddyfile
 
 # Remove file capabilities from caddy binary (not needed on port 8080,
 # and incompatible with no-new-privileges:true in docker-compose)

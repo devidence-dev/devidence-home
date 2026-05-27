@@ -1,6 +1,6 @@
 # Dockerfile
 # Stage 1: Build
-FROM oven/bun:1.3.11-alpine AS builder
+FROM oven/bun:1.3.14-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -37,7 +37,7 @@ RUN convert public/images/devidence-logo.png -resize 256x256,128x128,64x64,32x32
 RUN bun run build
 
 # Stage 2: Production
-FROM caddy:2.11.2-alpine
+FROM caddy:2.11.3-alpine
 
 # Upgrade Alpine packages to get latest security patches (fixes zlib CVEs)
 RUN apk upgrade --no-cache

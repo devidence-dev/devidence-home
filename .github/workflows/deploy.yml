@@ -138,6 +138,5 @@ jobs:
           git config user.email "ci@devidence.dev"
           git config user.name "homelab-ci"
           git add kubernetes/internal-apps/devidence-home/values.yaml
-          git commit -m "chore(devidence-home): bump image to ${{ needs.version.outputs.tag }}"
-          git push
+          git diff --staged --quiet && echo "No changes to commit" || (git commit -m "chore(devidence-home): bump image to ${{ needs.version.outputs.tag }}" && git push)
           rm -rf /tmp/homelab-devidence-home-deploy

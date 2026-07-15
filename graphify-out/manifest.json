@@ -1,0 +1,147 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1784086721.050516,
+    "ast_hash": "e1e51f6f8be486960acae9aac64e6390",
+    "semantic_hash": "e1e51f6f8be486960acae9aac64e6390"
+  },
+  ".devcontainer/devcontainer.json": {
+    "mtime": 1774763772.9449673,
+    "ast_hash": "3b1e27cf71f5d25c2fbeac7cde2e9153",
+    "semantic_hash": "3b1e27cf71f5d25c2fbeac7cde2e9153"
+  },
+  ".vscode/extensions.json": {
+    "mtime": 1764893008.2946398,
+    "ast_hash": "200d2e103f19aa20cbc8eb59dd6079b1",
+    "semantic_hash": "200d2e103f19aa20cbc8eb59dd6079b1"
+  },
+  "jsconfig.json": {
+    "mtime": 1764893008.2946398,
+    "ast_hash": "e400dc6ce6e15e6b7376bfdb3c2d0606",
+    "semantic_hash": "e400dc6ce6e15e6b7376bfdb3c2d0606"
+  },
+  "package.json": {
+    "mtime": 1769971221.7383976,
+    "ast_hash": "01b7e80443c6d0f87b41725e4c038aee",
+    "semantic_hash": "01b7e80443c6d0f87b41725e4c038aee"
+  },
+  "src/App.svelte": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "fb066f393ab9c35f6f963cb6b1be00de",
+    "semantic_hash": "fb066f393ab9c35f6f963cb6b1be00de"
+  },
+  "src/lib/Background.svelte": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "a05a24598da7dd31b79a39c906e4bf86",
+    "semantic_hash": "a05a24598da7dd31b79a39c906e4bf86"
+  },
+  "src/lib/Counter.svelte": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "e5ee6972869a4751d73c1b11b682dc5f",
+    "semantic_hash": "e5ee6972869a4751d73c1b11b682dc5f"
+  },
+  "src/lib/Footer.svelte": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "c577341eb53fe3172c485b10aed575e8",
+    "semantic_hash": "c577341eb53fe3172c485b10aed575e8"
+  },
+  "src/lib/Modal.svelte": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "b5daa626fbeaf4a9f74221f078b64b53",
+    "semantic_hash": "b5daa626fbeaf4a9f74221f078b64b53"
+  },
+  "src/lib/PrivacyContent.svelte": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "a0be3523ee2a0f81c91f5957e491d9a7",
+    "semantic_hash": "a0be3523ee2a0f81c91f5957e491d9a7"
+  },
+  "src/lib/Profile.svelte": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "773a8579f34c5799d046165b9002b3ad",
+    "semantic_hash": "773a8579f34c5799d046165b9002b3ad"
+  },
+  "src/lib/SocialButton.svelte": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "f7fbb9565217a30bcf548737937e095f",
+    "semantic_hash": "f7fbb9565217a30bcf548737937e095f"
+  },
+  "src/lib/TermsContent.svelte": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "ff47a68ebf3e3445d96b4115cad964dd",
+    "semantic_hash": "ff47a68ebf3e3445d96b4115cad964dd"
+  },
+  "src/lib/animations.js": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "b31b97d2a1cbb5854151b296ce3bc13e",
+    "semantic_hash": "b31b97d2a1cbb5854151b296ce3bc13e"
+  },
+  "src/main.js": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "d3841b7384f700b22fcfea7ed367f4e8",
+    "semantic_hash": "d3841b7384f700b22fcfea7ed367f4e8"
+  },
+  "src/vite-env.d.ts": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "b3ea8efbd34fc47efac356333b135a8e",
+    "semantic_hash": "b3ea8efbd34fc47efac356333b135a8e"
+  },
+  "svelte.config.js": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "8ac8487914f30c472122f4ecbc5955a6",
+    "semantic_hash": "8ac8487914f30c472122f4ecbc5955a6"
+  },
+  "vite.config.js": {
+    "mtime": 1769971221.7383976,
+    "ast_hash": "2115fc1f171fd1d0da73fe051bb5a594",
+    "semantic_hash": "2115fc1f171fd1d0da73fe051bb5a594"
+  },
+  ".github/workflows/deploy.yml": {
+    "mtime": 1779901686.5560184,
+    "ast_hash": "162678afd64a6f51f71004ac6267cd74",
+    "semantic_hash": "162678afd64a6f51f71004ac6267cd74"
+  },
+  "CLAUDE.md": {
+    "mtime": 1784086721.050516,
+    "ast_hash": "82efb97a359f5c7290bf2513d14686be",
+    "semantic_hash": "82efb97a359f5c7290bf2513d14686be"
+  },
+  "README.md": {
+    "mtime": 1774763772.9449673,
+    "ast_hash": "154f891ec2d67eea3e18d7f13c587ef7",
+    "semantic_hash": "154f891ec2d67eea3e18d7f13c587ef7"
+  },
+  "docker-compose.yml": {
+    "mtime": 1774763772.9449673,
+    "ast_hash": "22be5e59c8f1d4c81d3561398f405ddf",
+    "semantic_hash": "22be5e59c8f1d4c81d3561398f405ddf"
+  },
+  "index.html": {
+    "mtime": 1769973323.6787586,
+    "ast_hash": "d1257f9eaa1e8cd518bf1d6810f489bc",
+    "semantic_hash": "d1257f9eaa1e8cd518bf1d6810f489bc"
+  },
+  "public/images/devidence-logo.png": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "ea4785521ff0b7ad632df5b8efcdd920",
+    "semantic_hash": "ea4785521ff0b7ad632df5b8efcdd920"
+  },
+  "public/svg/github.svg": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "dd306e511a8b6ceef66cf7f01eb33a80",
+    "semantic_hash": "dd306e511a8b6ceef66cf7f01eb33a80"
+  },
+  "public/svg/medium.svg": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "9361fd21cbfa8b1c3e1f1070ca96a9c5",
+    "semantic_hash": "9361fd21cbfa8b1c3e1f1070ca96a9c5"
+  },
+  "public/vite.svg": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "8e3a10e157f75ada21ab742c022d5430",
+    "semantic_hash": "8e3a10e157f75ada21ab742c022d5430"
+  },
+  "src/assets/svelte.svg": {
+    "mtime": 1764893008.2986395,
+    "ast_hash": "bf6f61806de2953fe8dfce3cf8040ec3",
+    "semantic_hash": "bf6f61806de2953fe8dfce3cf8040ec3"
+  }
+}

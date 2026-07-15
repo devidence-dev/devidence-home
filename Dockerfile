@@ -37,7 +37,7 @@ RUN convert public/images/devidence-logo.png -resize 256x256,128x128,64x64,32x32
 RUN bun run build
 
 # Stage 2: Production
-FROM caddy:2.11.3-alpine
+FROM caddy:2.11.4-alpine
 
 # Upgrade Alpine packages to get latest security patches (fixes zlib CVEs)
 RUN apk upgrade --no-cache

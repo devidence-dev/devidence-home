@@ -27,8 +27,9 @@ USER appuser
 # Copy source code
 COPY --chown=appuser:appgroup . .
 
-# Convert images in public/images to webp
-RUN find public/images \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \) -exec sh -c 'for img; do cwebp -q 80 "$img" -o "${img%.*}.webp"; done' sh {} +
+# Convert images in public/images to webp, resized to 256x256 (2x the
+# 128px display size used for the avatar) to avoid shipping oversized assets
+RUN find public/images \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \) -exec sh -c 'for img; do cwebp -q 80 -resize 256 256 "$img" -o "${img%.*}.webp"; done' sh {} +
 
 # Generate optimized favicon.ico (16x16, 32x32) and PNG favicons from devidence-logo.png
 RUN convert public/images/devidence-logo.png -resize 32x32 -define icon:auto-resize=32,16 public/favicon.ico && \

@@ -11,7 +11,7 @@
 </script>
 
 <!-- Imagen de perfil -->
-<img alt="avatar" id="avatar" class="rounded-avatar fadein" src={avatarSrc} height="128px" width="128px" style="object-fit: cover;" on:error={handleImgError}>
+<img alt="avatar" id="avatar" class="rounded-avatar fadein" src={avatarSrc} height="128px" width="128px" style="object-fit: cover;" fetchpriority="high" on:error={handleImgError}>
 
 <!-- Nombre con badge de verificación (opcional) -->
 <h1 class="fadein dynamic-contrast">

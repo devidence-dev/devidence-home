@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import { initializeBackground, setupButtonTracking } from './lib/animations.js';
+  import { setupButtonTracking } from './lib/animations.js';
   import Footer from './lib/Footer.svelte';
   import SocialButton from './lib/SocialButton.svelte';
   import Background from './lib/Background.svelte';
@@ -21,8 +21,6 @@
   const mediumSvg = './svg/medium.svg';
 
   onMount(() => {
-    // Inicializar el fondo de estrellas y el seguimiento de botones
-    initializeBackground();
     setupButtonTracking();
   });
 </script>

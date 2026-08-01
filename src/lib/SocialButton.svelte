@@ -15,7 +15,7 @@
     href={url} 
     target="_blank"
   >
-    <img alt={text.toLowerCase()} class="icon hvr-icon" src={iconSrc}>{text}
+    <img alt="" aria-hidden="true" class="icon hvr-icon" src={iconSrc}>{text}
   </a>
 </div>
 

@@ -30,8 +30,10 @@ COPY --chown=appuser:appgroup . .
 # Convert images in public/images to webp
 RUN find public/images \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \) -exec sh -c 'for img; do cwebp -q 80 "$img" -o "${img%.*}.webp"; done' sh {} +
 
-# Generate favicon.ico from devidence-logo.png (multi-resolution)
-RUN convert public/images/devidence-logo.png -resize 256x256,128x128,64x64,32x32,16x16 public/favicon.ico
+# Generate optimized favicon.ico (16x16, 32x32) and PNG favicons from devidence-logo.png
+RUN convert public/images/devidence-logo.png -resize 32x32 -define icon:auto-resize=32,16 public/favicon.ico && \
+    convert public/images/devidence-logo.png -resize 180x180 public/apple-touch-icon.png && \
+    convert public/images/devidence-logo.png -resize 32x32 public/favicon-32x32.png
 
 # Build the application
 RUN bun run build
@@ -46,6 +48,9 @@ RUN apk upgrade --no-cache
 COPY --from=builder --chown=1000:1000 /app/dist /srv
 COPY --from=builder --chown=1000:1000 /app/public/images/*.webp /srv/images/
 COPY --from=builder --chown=1000:1000 /app/public/favicon.ico /srv/
+COPY --from=builder --chown=1000:1000 /app/public/favicon-32x32.png /srv/
+COPY --from=builder --chown=1000:1000 /app/public/apple-touch-icon.png /srv/
+COPY --from=builder --chown=1000:1000 /app/public/favicon.svg /srv/
 
 # Copy Caddyfile
 COPY --chown=1000:1000 Caddyfile /etc/caddy/Caddyfile

@@ -46,6 +46,7 @@ body {
   height: 100%;
   animation: stars linear infinite;
   animation-duration: 50s;
+  will-change: transform;
   background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 90px 40px, #fff, rgba(0, 0, 0, 0));
   background-repeat: repeat;
   background-size: 200px 200px;
@@ -60,6 +61,7 @@ body {
   height: 100%;
   animation: stars linear infinite;
   animation-duration: 100s;
+  will-change: transform;
   background-image: radial-gradient(1px 1px at 100px 50px, #eee, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 150px 82px, #fff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 50px 140px, #ddd, rgba(0, 0, 0, 0));
   background-repeat: repeat;
   background-size: 300px 300px;
@@ -74,6 +76,7 @@ body {
   height: 100%;
   animation: stars linear infinite;
   animation-duration: 150s;
+  will-change: transform;
   background-image: radial-gradient(1px 1px at 150px 150px, #ccc, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 250px 250px, #fff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 300px 300px, #fff, rgba(0, 0, 0, 0));
   background-repeat: repeat;
   background-size: 400px 400px;

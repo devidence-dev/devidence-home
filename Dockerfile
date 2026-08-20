@@ -1,6 +1,6 @@
 # Dockerfile
 # Stage 1: Build
-FROM oven/bun:1.3.14-alpine AS builder
+FROM oven/bun:1.4.0-alpine AS builder
 
 # Set working directory
 WORKDIR /app

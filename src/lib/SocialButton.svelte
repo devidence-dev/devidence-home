@@ -3,8 +3,8 @@
   export let url;
   export let iconSrc;
   export let text;
-  export let className = "button-medium"; // Clase predeterminada
-  export let delay = 1; // Retraso predeterminado
+  export let className = "button-medium"; // Default class
+  export let delay = 1; // Default delay
 </script>
 
 <div style="--delay: {delay}s" class="button-entrance button-wrapper">

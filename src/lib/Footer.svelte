@@ -32,7 +32,7 @@
   
   .footer-hover {
     transition: all 0.2s ease-in-out;
-    color: #4a89dc; /* Azul más claro como se ve en la imagen */
+    color: #4a89dc; /* Lighter blue, as shown in the image */
     text-decoration: none;
   }
   

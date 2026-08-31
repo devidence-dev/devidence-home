@@ -16,7 +16,7 @@
     }
   }
 
-  // Las rutas correctas para los recursos
+  // Correct asset paths
   const githubSvg = './svg/github.svg';
   const mediumSvg = './svg/medium.svg';
 
@@ -26,13 +26,13 @@
 </script>
 
 <main>
-  <!-- Fondo con animación de estrellas -->
+  <!-- Star-animated background -->
   <Background />
 
   <div class="container">
     <div class="row">
       <div class="column" style="margin-top: 5vh">
-        <!-- Perfil con avatar y descripción -->
+        <!-- Profile with avatar and description -->
         <Profile 
           avatarSrc={currentLogo} 
           name="devidence" 
@@ -41,7 +41,7 @@
           on:avatarError={handleLogoError}
         />
         
-        <!-- Botones sociales -->
+        <!-- Social buttons -->
         <SocialButton id="1" url="https://medium.com/@devidence" iconSrc={mediumSvg} text="Medium" className="button-medium" delay={1} />
         <SocialButton id="2" url="https://github.com/devidence-dev" iconSrc={githubSvg} text="Github" className="button-github" delay={2} />
         
@@ -54,7 +54,7 @@
 </main>
 
 <style>
-  /* Incluimos estilos locales específicos del componente aquí si los necesitamos */
+  /* Add component-specific local styles here if needed */
   :global(.badge) {
     height: 0.6em;
     margin: 5px;
@@ -66,7 +66,7 @@
     cursor: pointer;
   }
   
-  /* Ajustes para mejorar el centrado vertical */
+  /* Adjustments to improve vertical centering */
   :global(body), :global(html) {
     height: 100%;
   }

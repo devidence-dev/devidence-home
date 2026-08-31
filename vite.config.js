@@ -5,22 +5,22 @@ import { svelte } from '@sveltejs/vite-plugin-svelte'
 export default defineConfig({
   plugins: [svelte()],
   build: {
-    // Optimizaciones de producción
+    // Production optimizations
     target: 'es2020',
     minify: 'terser',
     cssMinify: true,
     rollupOptions: {
       output: {
         manualChunks: {
-          // Separar vendor chunks para mejor caching
+          // Separate vendor chunks for better caching
           vendor: ['svelte']
         }
       }
     },
-    // Comprimir más agresivamente
+    // Compress more aggressively
     terserOptions: {
       compress: {
-        drop_console: true, // Eliminar console.logs en prod
+        drop_console: true, // Remove console logs in production
         drop_debugger: true
       }
     }

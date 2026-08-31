@@ -7,20 +7,20 @@
 
 	# Security headers
 	header {
-		# HSTS (Strict-Transport-Security) - 1 año con subdominios y preload
+		# HSTS (Strict-Transport-Security) - 1 year with subdomains and preload
 		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
 		# Cross-Origin Isolation (COOP & CORP)
 		Cross-Origin-Opener-Policy "same-origin"
 		Cross-Origin-Resource-Policy "same-origin"
 
-		# Protecciones estándar de navegador
+		# Standard browser protections
 		X-Content-Type-Options "nosniff"
 		X-Frame-Options "DENY"
 		Referrer-Policy "strict-origin-when-cross-origin"
 		Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
 
-		# Content-Security-Policy endurecida
+		# Hardened Content-Security-Policy
 		Content-Security-Policy "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none';"
 		-Server
 	}

@@ -1,5 +1,5 @@
 <script>
-  // No necesitamos props para este componente sencillo
+  // This simple component does not need props
 </script>
 
 <div class="background-container">

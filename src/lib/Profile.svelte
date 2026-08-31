@@ -10,10 +10,10 @@
   }
 </script>
 
-<!-- Imagen de perfil -->
+<!-- Profile image -->
 <img alt="avatar" id="avatar" class="rounded-avatar fadein" src={avatarSrc} height="128px" width="128px" style="object-fit: cover;" fetchpriority="high" on:error={handleImgError}>
 
-<!-- Nombre con badge de verificación (opcional) -->
+<!-- Name with optional verification badge -->
 <h1 class="fadein dynamic-contrast">
   {name}
   {#if verified}
@@ -26,7 +26,7 @@
   {/if}
 </h1>
 
-<!-- Descripción -->
+<!-- Description -->
 <center>
   <div class="fadein description-parent dynamic-contrast">
     <p>{description}</p>

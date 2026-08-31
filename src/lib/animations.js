@@ -1,6 +1,6 @@
-// Registra los clics en los botones para fines de seguimiento.
-// El fondo de estrellas se dibuja con box-shadow estático en
-// skeleton-auto.css (#object1/#object2/#object3) - no requiere JS.
+// Records button clicks for tracking purposes.
+// The star background is rendered with static box-shadow values in
+// skeleton-auto.css (#object1/#object2/#object3) - no JavaScript required.
 export function setupButtonTracking() {
   console.log("Setting up button tracking...");
   
@@ -8,8 +8,8 @@ export function setupButtonTracking() {
     if (event.target.classList.contains('button-click')) {
       var id = event.target.id;
       if (!sessionStorage.getItem('clicked-' + id)) {
-        // Como es una migración, omitimos la llamada fetch al endpoint original
-        // y solo guardamos en sessionStorage
+        // Since this is a migration, skip the fetch call to the original endpoint
+        // and only store the result in sessionStorage
         sessionStorage.setItem('clicked-' + id, 'true');
       }
     }

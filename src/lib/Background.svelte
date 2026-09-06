@@ -39,16 +39,29 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 160px;
-    height: 2px;
-    border-radius: 999px;
-    background: linear-gradient(-45deg, rgba(255, 255, 255, 0), #fff, rgba(255, 255, 255, 0));
-    filter: drop-shadow(0 0 6px #fff);
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.6);
     opacity: 0;
     transform: rotate(var(--angle));
     animation-name: shoot;
-    animation-timing-function: ease-in;
+    animation-timing-function: ease-out;
     animation-iteration-count: infinite;
+  }
+
+  /* Tail: trails behind the head in the local +x direction, since the head
+     travels toward local -x (see the `shoot` keyframe below). */
+  .shooting-star::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 140px;
+    height: 1px;
+    transform: translateY(-50%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0));
   }
 
   .star-a { --angle: 320deg; top: 8%;  left: 15%; animation-duration: 9s;  animation-delay: 1s; }
@@ -58,9 +71,9 @@
 
   @keyframes shoot {
     0%   { opacity: 0; }
-    1%   { opacity: 1; }
-    4%   { transform: translateX(-420px) rotate(var(--angle)); opacity: 0; }
-    100% { transform: translateX(-420px) rotate(var(--angle)); opacity: 0; }
+    2%   { opacity: 1; }
+    8%   { transform: rotate(var(--angle)) translateX(-500px); opacity: 0; }
+    100% { transform: rotate(var(--angle)) translateX(-500px); opacity: 0; }
   }
 
   @media (prefers-reduced-motion: reduce) {

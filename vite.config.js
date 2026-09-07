@@ -4,6 +4,19 @@ import { svelte } from '@sveltejs/vite-plugin-svelte'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [svelte()],
+  resolve: {
+    // Force the client build of Svelte components under Vitest/jsdom,
+    // otherwise mount() resolves to the SSR-only server build.
+    conditions: ['browser'],
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: ['./vitest-setup.js'],
+    coverage: {
+      provider: 'v8',
+    },
+  },
   build: {
     // Production optimizations
     target: 'es2020',

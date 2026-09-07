@@ -1,0 +1,14 @@
+name: 🧪 CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    name: 🧪 CI
+    uses: devidence-dev/workflows/.github/workflows/ci-node.yml@v1
+    permissions:
+      contents: read

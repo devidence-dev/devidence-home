@@ -1,106 +1,108 @@
-# Graph Report - .  (2026-07-14)
+# Graph Report - devidence-home  (2026-09-11)
 
 ## Corpus Check
-- Corpus is ~49,418 words - fits in a single context window. You may not need a graph.
+- 21 files · ~49,696 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 79 nodes · 68 edges · 18 communities (13 shown, 5 thin omitted)
-- Extraction: 88% EXTRACTED · 10% INFERRED · 1% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.86)
-- Token cost: 165,663 input · 0 output
+- 113 nodes · 108 edges · 20 communities (7 shown, 8 thin omitted)
+- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.79)
+- Token cost: 52,773 input · 0 output
 
 ## Community Hubs (Navigation)
-- Svelte App & UI Components
-- JS Config Compiler Options
-- CI/CD Deployment Pipeline
-- Package Scripts & Metadata
-- Build Tool Dependencies
-- Type Reference Includes
-- GitHub Icon Asset
-- Vite Brand Icon
-- Devidence Logo & Brand
-- Svelte Framework Icon
-- Graphify Workflow Doc
-- Medium Icon Asset
+- ESLint Config
+- TS/JS Compiler Config
+- Dev Dependencies
+- Stack & Deployment Overview
+- CI/CD Pipeline
+- NPM Scripts
+- Button Animations & Tests
+- GitHub Social Icon
+- Vite Branding
+- Devidence Brand
+- Svelte Branding
+- Graphify Workflow
+- Animations Module Reference
+- Robots Policy
+- Medium Icon
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 11 edges
-2. `Devidence Home Landing Page README` - 9 edges
-3. `include` - 4 edges
-4. `scripts` - 4 edges
-5. `Build & Push image job` - 4 edges
-6. `app service (devidence-home container)` - 4 edges
-7. `Deploy to production job` - 3 edges
-8. `@sveltejs/vite-plugin-svelte` - 2 edges
-9. `svelte` - 2 edges
-10. `terser` - 2 edges
+2. `Devidence Home Landing Page README` - 8 edges
+3. `scripts` - 8 edges
+4. `include` - 4 edges
+5. `Deploy Job (workflow_dispatch: patch/minor/major/rebuild)` - 4 edges
+6. `index.html app entry point` - 4 edges
+7. `vitest` - 3 edges
+8. `setupButtonTracking()` - 3 edges
+9. `Caddy` - 2 edges
+10. `app service (devidence-home container)` - 2 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `homelab repository (devidence-dev/homelab)` --conceptually_related_to--> `app service (devidence-home container)`  [AMBIGUOUS]
-  .github/workflows/deploy.yml → docker-compose.yml
-- `index.html entry document` --conceptually_related_to--> `Devidence Home Landing Page README`  [INFERRED]
-  index.html → README.md
-- `devidence-home Docker image (zot.devidence.dev/devidence-home)` --shares_data_with--> `app service (devidence-home container)`  [INFERRED]
-  .github/workflows/deploy.yml → docker-compose.yml
+- `index.html app entry point` --references--> `favicon.svg - shield/badge emblem with checkmark`  [EXTRACTED]
+  index.html → public/favicon.svg
 - `Caddy` --conceptually_related_to--> `app service (devidence-home container)`  [INFERRED]
   README.md → docker-compose.yml
+- `CI Job (push/PR trigger)` --conceptually_related_to--> `index.html app entry point`  [INFERRED]
+  .github/workflows/ci.yml → index.html
+- `Deploy Job (workflow_dispatch: patch/minor/major/rebuild)` --conceptually_related_to--> `index.html app entry point`  [INFERRED]
+  .github/workflows/deploy.yml → index.html
 
 ## Import Cycles
 - None detected.
 
 ## Hyperedges (group relationships)
-- **CI/CD Release Pipeline (version -> build -> deploy)** — github_workflows_deploy_version, github_workflows_deploy_build, github_workflows_deploy_deploy [EXTRACTED 0.95]
-- **Docker Image Build Pattern (shared Dockerfile across CI and Compose)** — github_workflows_deploy_build, docker_compose_app_service, dockerfile [INFERRED 0.85]
-- **Devidence Home Project Identity (name, branding, description across files)** — index_html_document, readme_readme, github_workflows_deploy_devidence_home_image [INFERRED 0.75]
+- **Docker Image Build Pattern (shared Dockerfile across CI and Compose)** — docker_compose_app_service [INFERRED 0.85]
+- **Devidence Home Project Identity (name, branding, description across files)** — readme_readme [INFERRED 0.75]
+- **CI/CD pipeline shipping the devidence-home static site** — github_workflows_ci_ci_job, github_workflows_deploy_deploy_job, index_app_entry [INFERRED 0.75]
 
-## Communities (18 total, 5 thin omitted)
+## Communities (20 total, 8 thin omitted)
 
-### Community 0 - "Svelte App & UI Components"
-Cohesion: 0.13
-Nodes (8): ./lib/animations.js, index.html entry document, Bun, LinkStack Galaxy Theme, Devidence Home Landing Page README, Svelte, Vite, app
+### Community 0 - "ESLint Config"
+Cohesion: 0.12
+Nodes (17): name, private, type, version, eslint, @eslint/js, eslint-plugin-svelte, globals (+9 more)
 
-### Community 1 - "JS Config Compiler Options"
+### Community 1 - "TS/JS Compiler Config"
+Cohesion: 0.12
+Nodes (15): compilerOptions, checkJs, esModuleInterop, isolatedModules, module, moduleResolution, resolveJsonModule, skipLibCheck (+7 more)
+
+### Community 2 - "Dev Dependencies"
+Cohesion: 0.12
+Nodes (16): devDependencies, eslint, @eslint/js, eslint-plugin-svelte, globals, jsdom, svelte, svelte-check (+8 more)
+
+### Community 3 - "Stack & Deployment Overview"
+Cohesion: 0.16
+Nodes (9): app service (devidence-home container), Container Security Hardening, Bun, Caddy, LinkStack Galaxy Theme, Devidence Home Landing Page README, Svelte, Vite (+1 more)
+
+### Community 4 - "CI/CD Pipeline"
 Cohesion: 0.18
-Nodes (11): compilerOptions, checkJs, esModuleInterop, isolatedModules, module, moduleResolution, resolveJsonModule, skipLibCheck (+3 more)
+Nodes (10): CI Job (push/PR trigger), Reusable workflow: ci-node.yml (devidence-dev/workflows@v1), Reusable workflow: cd-build-deploy-semver.yml (devidence-dev/workflows@v1), Deploy Job (workflow_dispatch: patch/minor/major/rebuild), Secret: HOMELAB_DEPLOY_TOKEN, Helm values file: kubernetes/internal-apps/devidence-home/values.yaml, index.html app entry point, #app mount element (+2 more)
 
-### Community 2 - "CI/CD Deployment Pipeline"
-Cohesion: 0.28
-Nodes (9): app service (devidence-home container), Container Security Hardening, Build & Push image job, Deploy to production job, devidence-home Docker image (zot.devidence.dev/devidence-home), homelab repository (devidence-dev/homelab), Calculate version job, Zot Container Registry (zot.devidence.dev) (+1 more)
+### Community 5 - "NPM Scripts"
+Cohesion: 0.25
+Nodes (8): scripts, build, check, dev, lint, preview, test, test:watch
 
-### Community 3 - "Package Scripts & Metadata"
-Cohesion: 0.22
-Nodes (8): name, private, scripts, build, dev, preview, type, version
-
-### Community 4 - "Build Tool Dependencies"
-Cohesion: 0.22
-Nodes (9): devDependencies, svelte, @sveltejs/vite-plugin-svelte, terser, vite, svelte, @sveltejs/vite-plugin-svelte, terser (+1 more)
-
-### Community 5 - "Type Reference Includes"
-Cohesion: 0.40
-Nodes (4): include, src/**/*.d.ts, src/**/*.js, src/**/*.svelte
-
-### Community 6 - "GitHub Icon Asset"
+### Community 8 - "GitHub Social Icon"
 Cohesion: 0.67
 Nodes (3): GitHub (platform), LittleLink Icon Set, GitHub Icon (SVG)
 
-## Ambiguous Edges - Review These
-- `homelab repository (devidence-dev/homelab)` → `app service (devidence-home container)`  [AMBIGUOUS]
-  .github/workflows/deploy.yml · relation: conceptually_related_to
-
 ## Knowledge Gaps
-- **42 isolated node(s):** `moduleResolution`, `target`, `module`, `verbatimModuleSyntax`, `isolatedModules` (+37 more)
-  These have ≤1 connection - possible missing edges or undocumented components.
-- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **70 isolated node(s):** `moduleResolution`, `target`, `module`, `verbatimModuleSyntax`, `isolatedModules` (+65 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 81 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **What is the exact relationship between `homelab repository (devidence-dev/homelab)` and `app service (devidence-home container)`?**
-  _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
-- **Why does `Devidence Home Landing Page README` connect `Svelte App & UI Components` to `CI/CD Deployment Pipeline`?**
-  _High betweenness centrality (0.070) - this node is a cross-community bridge._
-- **Why does `Caddy` connect `CI/CD Deployment Pipeline` to `Svelte App & UI Components`?**
-  _High betweenness centrality (0.045) - this node is a cross-community bridge._
+- **Why does `devDependencies` connect `Dev Dependencies` to `ESLint Config`?**
+  _High betweenness centrality (0.171) - this node is a cross-community bridge._
+- **Why does `vitest` connect `Button Animations & Tests` to `ESLint Config`, `Stack & Deployment Overview`?**
+  _High betweenness centrality (0.162) - this node is a cross-community bridge._
 - **What connects `moduleResolution`, `target`, `module` to the rest of the system?**
-  _42 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Svelte App & UI Components` be split into smaller, more focused modules?**
-  _Cohesion score 0.1323529411764706 - nodes in this community are weakly interconnected._
+  _70 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `ESLint Config` be split into smaller, more focused modules?**
+  _Cohesion score 0.11578947368421053 - nodes in this community are weakly interconnected._
+- **Should `TS/JS Compiler Config` be split into smaller, more focused modules?**
+  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+- **Should `Dev Dependencies` be split into smaller, more focused modules?**
+  _Cohesion score 0.125 - nodes in this community are weakly interconnected._

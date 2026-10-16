@@ -16,7 +16,7 @@
 
 <Background />
 
-<div class="flex min-h-screen flex-col">
+<div class="flex min-h-dvh flex-col">
 <main class="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-4 py-6">
   <Profile
     name="devidence"

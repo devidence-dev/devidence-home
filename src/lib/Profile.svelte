@@ -4,8 +4,8 @@
   export let verified = true;
 </script>
 
-<div class="moon fadein mx-auto flex size-62 items-center justify-center rounded-full">
-  <img alt={name} class="h-auto w-48 [filter:drop-shadow(0_0_8px_rgba(51,76,90,.45))]" src="/images/devidence-logo-light.svg" fetchpriority="high">
+<div class="moon fadein mx-auto flex size-44 sm:size-62 items-center justify-center rounded-full">
+  <img alt={name} class="h-auto w-34 sm:w-48 [filter:drop-shadow(0_0_8px_rgba(51,76,90,.45))]" src="/images/devidence-logo-light.svg" fetchpriority="high">
 </div>
 
 <h1 class="fadein mt-6 mb-0 text-center text-3xl font-semibold tracking-tight text-ink">

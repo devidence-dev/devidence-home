@@ -16,6 +16,17 @@
   left: -5%;
 }
 
+/* Star offsets span ~2000px; on phones show them at half scale so the
+   visible area keeps a desktop-like density. */
+@media (max-width: 640px) {
+  .parallax-background {
+    width: 220%;
+    height: 220%;
+    transform: scale(.5);
+    transform-origin: 0 0;
+  }
+}
+
 .object1 {
   position: fixed;
   z-index: -1;

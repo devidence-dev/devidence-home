@@ -15,7 +15,7 @@ describe('Profile', () => {
 
     const moon = container.querySelector('.moon')
     expect(moon).toBeInTheDocument()
-    expect(moon).toHaveClass('size-62')
+    expect(moon).toHaveClass('size-44', 'sm:size-62')
     expect(moon.querySelector('img[src="/images/devidence-logo-light.svg"]')).toBeInTheDocument()
   })
 

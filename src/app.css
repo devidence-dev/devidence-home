@@ -42,9 +42,10 @@
   }
 }
 
-html,
-body {
-  height: 100%;
+/* Height follows content: a fixed 100% made the gradient end at the first
+   viewport and left black canvas below it on iOS (dynamic toolbar). */
+html {
+  background: #090a0f;
 }
 
 /* Same body as the original galaxy look: radial gradient from the bottom,
@@ -54,6 +55,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   background: radial-gradient(ellipse at bottom, #223344 0%, #090a0f 100%) no-repeat;
   background-size: cover;

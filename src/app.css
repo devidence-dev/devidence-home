@@ -48,17 +48,24 @@ html {
   background: #090a0f;
 }
 
-/* Same body as the original galaxy look: radial gradient from the bottom,
-   relative position and the fade-in (its transform also anchors the fixed
-   star layer to the body, as before). */
+/* Gradient lives on a viewport-fixed layer so it also fills the areas under
+   the iOS status/toolbar (viewport-fit=cover). */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -20;
+  background: radial-gradient(ellipse at bottom, #223344 0%, #090a0f 100%);
+}
+
+/* Fade-in is opacity only: a transform on body would make it the containing
+   block of the fixed star/gradient layers (they would stop at body height). */
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
   min-height: 100dvh;
   position: relative;
-  background: radial-gradient(ellipse at bottom, #223344 0%, #090a0f 100%) no-repeat;
-  background-size: cover;
   color: var(--ink);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
@@ -74,8 +81,8 @@ body {
 }
 
 @keyframes transitionAnimation {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 a {

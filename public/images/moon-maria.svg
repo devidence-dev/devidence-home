@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Lunar "maria": ragged grey patches from fractal noise, thresholded with
+       a steep ramp (hard edges), two tones, faded near the rim.
+       Change `seed` for a new layout, `baseFrequency` for patch size. -->
+  <defs>
+    <filter id="light" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".022" numOctaves="5" seed="7"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 .74  0 0 0 0 .77  0 0 0 0 .82  16 0 0 0 -8.7"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".4"/></feComponentTransfer>
+    </filter>
+    <filter id="dark" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".022" numOctaves="5" seed="7"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 .62  0 0 0 0 .66  0 0 0 0 .73  16 0 0 0 -11.2"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".3"/></feComponentTransfer>
+    </filter>
+    <radialGradient id="fade" cx="48%" cy="46%" r="55%">
+      <stop offset=".7" stop-color="#fff"/>
+      <stop offset="1" stop-color="#000"/>
+    </radialGradient>
+    <mask id="rim"><rect width="200" height="200" fill="url(#fade)"/></mask>
+  </defs>
+  <g mask="url(#rim)">
+    <rect width="200" height="200" filter="url(#light)"/>
+    <rect width="200" height="200" filter="url(#dark)"/>
+  </g>
+</svg>

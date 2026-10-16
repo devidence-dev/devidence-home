@@ -25,91 +25,17 @@
 </script>
 
 {#if isOpen}
-  <div class="modal-backdrop" on:click={closeModal}></div>
-  <div class="modal-container">
-    <div class="modal-content" on:click|stopPropagation>
-      <div class="modal-header">
-        <h2>{title}</h2>
-        <button class="close-button" on:click={closeModal}>&times;</button>
+  <div class="fixed inset-0 z-[999] bg-black/50" on:click={closeModal} role="presentation"></div>
+  <div class="fixed top-1/2 left-1/2 z-[1000] w-[95%] max-w-lg -translate-x-1/2 -translate-y-1/2" role="dialog" aria-modal="true" aria-label={title}>
+    <div class="glass overflow-hidden rounded-3xl text-ink shadow-xl">
+      <div class="flex items-center justify-between border-b border-line px-4 py-3 sm:px-6 sm:py-4">
+        <h2 class="m-0 text-xl font-semibold">{title}</h2>
+        <button type="button" class="cursor-pointer rounded-full px-2 text-2xl leading-none text-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-accent" aria-label="Close" on:click={closeModal}>&times;</button>
       </div>
-      <div class="modal-body">
+      <div class="prose-legal max-h-[70vh] overflow-y-auto p-4 sm:p-6">
         <slot></slot>
       </div>
     </div>
   </div>
 {/if}
 
-<style>
-  .modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-  }
-  
-  .modal-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 500px;
-    max-height: 90vh;
-    z-index: 1000;
-  }
-  
-  .modal-content {
-    background-color: #1a1a2e;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    color: white;
-  }
-  
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .modal-header h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: white;
-  }
-  
-  .close-button {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: white;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .modal-body {
-    padding: 1.5rem;
-    max-height: 70vh;
-    overflow-y: auto;
-  }
-  
-  @media (max-width: 600px) {
-    .modal-container {
-      width: 95%;
-    }
-    
-    .modal-header {
-      padding: 0.75rem 1rem;
-    }
-    
-    .modal-body {
-      padding: 1rem;
-    }
-  }
-</style>

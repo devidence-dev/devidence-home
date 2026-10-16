@@ -1,260 +1,79 @@
-
-/* Table of contents
-––––––––––––––––––––––––––––––––––––––––––––––––––
-
-- Grid
-- Base Styles
-- Background
-- Typography
-- Links
-- Code
-- Spacing
-- Utilities
-- Misc
-- Credit footer
-
-*/
-
-
-/* Grid
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.container {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-    margin: 0 auto;
-    box-sizing: border-box; }
-  .column {
-    position: center;
-    width: 100%;
-    float: center;
-    box-sizing: border-box; }
-  
-  /* For devices larger than 400px */
-  @media (min-width: 400px) {
-    .container {
-      width: 85%;
-      padding: 0; }
-  }
-  
-  /* For devices larger than 550px */
-  @media (min-width: 550px) {
-    .container {
-      width: 80%; }
-    .column,
-    .columns {
-      margin-left: 0; }
-    .column:first-child,
-    .columns:first-child {
-      margin-left: 0; }
-  
-  }
-  
-  
-  /* Base Styles
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  /* NOTE
-  html is set to 62.5% so that all the REM measurements throughout Skeleton
-  are based on 10px sizing. So basically 1.5rem = 15px :) */
-
-  html {
-    font-size: 100%; }
-
-  :root {
-    --bgColor: #223344;
-    --bgColor2: #090a0f;
-    --accentColor: #FFF;
-    --font: 'Karla', sans-serif;
-    --delay: .3s; }
-
-  /* Background
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-  body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    font-family: var(--font);
-    background: radial-gradient(ellipse at bottom, var(--bgColor) 0%, var(--bgColor2) 100%);
-    opacity: 0;
-    animation: 1s ease-out var(--delay) 1 transitionAnimation; /* duration/timing-function/delay/iterations/name */
-    animation-fill-mode: forwards;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    color: #FFFFFF;
-  }
-
-  
-  /* Animation */
-  @keyframes transitionAnimation {
-    0% {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Parallax Background */
+.background-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -10;
 }
 
-@keyframes animate {
-    0% {
-      background-position: -500%;
-    }
-    100% {
-      background-position: 500%;
-    }
+.parallax-background {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  z-index: -10;
+  top: -5%;
+  left: -5%;
+}
+
+.object1 {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: stars linear infinite;
+  animation-duration: 50s;
+  will-change: transform;
+  background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 90px 40px, #fff, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+.object2 {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: stars linear infinite;
+  animation-duration: 100s;
+  will-change: transform;
+  background-image: radial-gradient(1px 1px at 100px 50px, #eee, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 150px 82px, #fff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 50px 140px, #ddd, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 300px 300px;
+}
+
+.object3 {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: stars linear infinite;
+  animation-duration: 150s;
+  will-change: transform;
+  background-image: radial-gradient(1px 1px at 150px 150px, #ccc, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 250px 250px, #fff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 300px 300px, #fff, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 400px 400px;
 }
 
 @keyframes animStar {
-    from {
-        transform: translateY(0px);
-    }
-    to {
-        transform: translateY(-2000px);
-    }
+  from { transform: translateY(0px); }
+  to { transform: translateY(-2000px); }
 }
-  
-  /* Typography
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  h1 {
-    margin-top: 0;
-    margin-bottom: 16px;
-    font-weight: 400; }
-  h1 { font-size:24px; line-height: 64px; letter-spacing: 0;}
-  
-  
-  /* Larger than phablet */
-  @media (min-width: 350px) {
-    h1 { font-size: 48px; line-height: 96px;}
+
+@keyframes stars {
+  from {
+    transform: translateY(0px);
   }
-  
-  p {
-    margin-top: 0; }
-  
-  
-  /* Links
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  a {
-    color: #0085FF; 
-    text-decoration: none;
+  to {
+    transform: translateY(1000px);
   }
-  a:hover {
-    color: #0085FF; }
-  
-  .spacing {
-    padding: 0 10px;
-    padding-top: 50px;
-  }
-  
-  /* Code
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  code {
-    padding: .2rem .5rem;
-    margin: 0 .2rem;
-    font-size: 90%;
-    white-space: nowrap;
-    background: #F1F1F1;
-    border: 1px solid #E1E1E1;
-    border-radius: 4px; }
-  pre > code {
-    display: block;
-    padding: 1rem 1.5rem;
-    white-space: pre; }
-  
-  /* Spacing
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  button,
-  .button {
-    margin-bottom: 1rem;
-    display: block !important; }
-  input,
-  textarea,
-  select,
-  fieldset {
-    margin-bottom: 1.5rem; }
-  pre,
-  blockquote,
-  dl,
-  figure,
-  p,
-  ol {
-    margin-bottom: 2.5rem; }
-  
-  
-  /* Utilities
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  .u-full-width {
-    width: 100%;
-    box-sizing: border-box; }
-  .u-max-full-width {
-    max-width: 100%;
-    box-sizing: border-box; }
-  .u-pull-right {
-    float: right; }
-  .u-pull-left {
-    float: left; }
-  
-  
-  /* Misc
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  hr {
-    margin-top: 3rem;
-    margin-bottom: 3.5rem;
-    border-width: 0;
-    border-top: 1px solid #E1E1E1; }
-  
-
-  /* ===== Scrollbar CSS ===== */
-    /* Firefox */
-    * {
-      scrollbar-width: thin;
-      scrollbar-color: #171a1d #31363b;
-    }
-  
-    /* Chrome, Edge, and Safari */
-    *::-webkit-scrollbar {
-      width: 8px;
-    }
-  
-    *::-webkit-scrollbar-track {
-      background: #31363b;
-    }
-  
-    *::-webkit-scrollbar-thumb {
-      background-color: #171a1d;
-      border-radius: 30px;
-      border: 3px none #ffffff;
-    }
-
-  
-/* Credit footer
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* Styling for credit footer text */
-.credit-txt {
-  font-weight: 700;
-  font-size: 15px;
-  text-decoration: none;
 }
-
-.credit-icon {
-  display: none;
-  right: 5px;
-}
-.credit-footer {
-  position: relative;
-  right: 15px;
-}
-
-/* Switches text color for credit footer for dark/light mode */
-
- .credit-txt-clr{
-     color: #FFF !important;
-}
-
-
 
 /*-----------------------parallax-----------------------*/
 #object1 {
@@ -817,4 +636,9 @@
   16px 1650px #fff, 1021px 1075px #fff, 723px 424px #fff, 1175px 41px #fff,
   494px 1957px #fff, 1296px 431px #fff, 175px 1507px #fff, 831px 121px #fff,
   498px 1947px #fff, 617px 880px #fff, 240px 403px #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #object1, #object2, #object3,
+  #object1:after, #object2:after, #object3:after { animation: none; }
 }

@@ -1,6 +1,5 @@
 // Records button clicks for tracking purposes.
-// The star background is rendered with static box-shadow values in
-// skeleton-auto.css (#object1/#object2/#object3) - no JavaScript required.
+// The star background lives in src/assets/styles/stars.css and needs no JavaScript.
 export function setupButtonTracking() {
   console.log("Setting up button tracking...");
   

@@ -7,27 +7,14 @@
   export let delay = 1; // Default delay
 </script>
 
-<div style="--delay: {delay}s" class="button-entrance button-wrapper">
-  <a 
-    {id} 
-    class="button {className} button-click button-hover icon-hover" 
-    rel="noopener noreferrer nofollow noindex" 
-    href={url} 
+<div style="--delay: {delay}s" class="button-entrance mx-auto my-2 w-full max-w-sm">
+  <a
+    {id}
+    class="button {className} button-click button-hover glass flex items-center justify-center gap-3 rounded-full px-6 py-3 font-medium text-ink shadow-sm transition-colors hover:bg-accent/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:bg-accent/25"
+    rel="noopener noreferrer nofollow noindex"
+    href={url}
     target="_blank"
   >
-    <img alt="" aria-hidden="true" class="icon hvr-icon" src={iconSrc}>{text}
+    <img alt="" aria-hidden="true" class="icon size-5" src={iconSrc}>{text}
   </a>
 </div>
-
-<style>
-  .button-wrapper {
-    margin: 0.5rem auto;
-    max-width: 400px;
-  }
-  
-  /* Make buttons look more like the image */
-  :global(.button) {
-    border-radius: 2rem !important;
-    padding: 0.8rem 1rem !important;
-  }
-</style>

@@ -1,6 +1,6 @@
 {
   "name": "Svelte Vite DevContainer",
-  "image": "oven/bun:1.3.14-slim",
+  "image": "oven/bun:1.4.3-slim",
   "remoteUser": "bun",
   "forwardPorts": [5173],
   "portsAttributes": {
@@ -25,9 +25,12 @@
       "configureZshAsDefaultShell": "true",
       "installOhMyZsh": "true",
       "upgradePackages": "true"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
     }
   },
-  "postCreateCommand": "bun install",
+  "postCreateCommand": "bun install && npm install -g @fission-ai/openspec@latest",
   "customizations": {
     "vscode": {
       "extensions": [

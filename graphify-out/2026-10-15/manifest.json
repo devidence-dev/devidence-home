@@ -1,0 +1,224 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1784087426.0,
+    "seen": 1789150143.6371355,
+    "ast_hash": "42172d66e9fc2e2c0b3a82f154949e7e",
+    "semantic_hash": "42172d66e9fc2e2c0b3a82f154949e7e"
+  },
+  ".devcontainer/devcontainer.json": {
+    "mtime": 1785555147.0,
+    "seen": 1789150143.6371398,
+    "ast_hash": "5e0400c4bfe1f8f5bacb09d7be286a6d",
+    "semantic_hash": "5e0400c4bfe1f8f5bacb09d7be286a6d"
+  },
+  ".vscode/extensions.json": {
+    "mtime": 1764893008.0,
+    "seen": 1789150143.6371408,
+    "ast_hash": "200d2e103f19aa20cbc8eb59dd6079b1",
+    "semantic_hash": "200d2e103f19aa20cbc8eb59dd6079b1"
+  },
+  "jsconfig.json": {
+    "mtime": 1764893008.0,
+    "seen": 1789150143.6371422,
+    "ast_hash": "e400dc6ce6e15e6b7376bfdb3c2d0606",
+    "semantic_hash": "e400dc6ce6e15e6b7376bfdb3c2d0606"
+  },
+  "package.json": {
+    "mtime": 1788748641.6402986,
+    "seen": 1789150143.637143,
+    "ast_hash": "76202f951fa48f22feaabfc969522168",
+    "semantic_hash": "76202f951fa48f22feaabfc969522168"
+  },
+  "src/App.svelte": {
+    "mtime": 1788207551.4790459,
+    "seen": 1789150143.6371434,
+    "ast_hash": "c642d444857c48f743b090e8c8c90603",
+    "semantic_hash": "c642d444857c48f743b090e8c8c90603"
+  },
+  "src/lib/Background.svelte": {
+    "mtime": 1788731598.2402427,
+    "seen": 1789150143.6371443,
+    "ast_hash": "9a6f1adcb3e183cc972aa712794ff613",
+    "semantic_hash": "9a6f1adcb3e183cc972aa712794ff613"
+  },
+  "src/lib/Counter.svelte": {
+    "mtime": 1764893008.0,
+    "seen": 1789150143.6371448,
+    "ast_hash": "e5ee6972869a4751d73c1b11b682dc5f",
+    "semantic_hash": "e5ee6972869a4751d73c1b11b682dc5f"
+  },
+  "src/lib/Footer.svelte": {
+    "mtime": 1788207552.0150106,
+    "seen": 1789150143.637145,
+    "ast_hash": "704edd911ea4df634208b7e567600451",
+    "semantic_hash": "704edd911ea4df634208b7e567600451"
+  },
+  "src/lib/Modal.svelte": {
+    "mtime": 1764893008.0,
+    "seen": 1789150143.6371458,
+    "ast_hash": "b5daa626fbeaf4a9f74221f078b64b53",
+    "semantic_hash": "b5daa626fbeaf4a9f74221f078b64b53"
+  },
+  "src/lib/PrivacyContent.svelte": {
+    "mtime": 1764893008.0,
+    "seen": 1789150143.6371465,
+    "ast_hash": "a0be3523ee2a0f81c91f5957e491d9a7",
+    "semantic_hash": "a0be3523ee2a0f81c91f5957e491d9a7"
+  },
+  "src/lib/Profile.svelte": {
+    "mtime": 1788207552.2829928,
+    "seen": 1789150143.6371472,
+    "ast_hash": "aa27098d628497021400b1ba45ab85c9",
+    "semantic_hash": "aa27098d628497021400b1ba45ab85c9"
+  },
+  "src/lib/SocialButton.svelte": {
+    "mtime": 1788207552.550975,
+    "seen": 1789150143.637148,
+    "ast_hash": "d9f53dbd6ca2db94468f501c7c3bc2a9",
+    "semantic_hash": "d9f53dbd6ca2db94468f501c7c3bc2a9"
+  },
+  "src/lib/TermsContent.svelte": {
+    "mtime": 1764893008.0,
+    "seen": 1789150143.6371489,
+    "ast_hash": "ff47a68ebf3e3445d96b4115cad964dd",
+    "semantic_hash": "ff47a68ebf3e3445d96b4115cad964dd"
+  },
+  "src/lib/animations.js": {
+    "mtime": 1788207552.826957,
+    "seen": 1789150143.6371493,
+    "ast_hash": "ab19b210a28d6ada1dee3ea6c638773b",
+    "semantic_hash": "ab19b210a28d6ada1dee3ea6c638773b"
+  },
+  "src/main.js": {
+    "mtime": 1764893008.0,
+    "seen": 1789150143.6371505,
+    "ast_hash": "d3841b7384f700b22fcfea7ed367f4e8",
+    "semantic_hash": "d3841b7384f700b22fcfea7ed367f4e8"
+  },
+  "src/vite-env.d.ts": {
+    "mtime": 1788748728.4825854,
+    "seen": 1789150143.637151,
+    "ast_hash": "a11e3a1af1f8ed6830c89c198fba63d6",
+    "semantic_hash": "a11e3a1af1f8ed6830c89c198fba63d6"
+  },
+  "svelte.config.js": {
+    "mtime": 1764893008.0,
+    "seen": 1789150143.6371515,
+    "ast_hash": "8ac8487914f30c472122f4ecbc5955a6",
+    "semantic_hash": "8ac8487914f30c472122f4ecbc5955a6"
+  },
+  "vite.config.js": {
+    "mtime": 1788748692.3529615,
+    "seen": 1789150143.637152,
+    "ast_hash": "170ff44c0122c26e954422891f971d62",
+    "semantic_hash": "170ff44c0122c26e954422891f971d62"
+  },
+  ".github/workflows/deploy.yml": {
+    "mtime": 1788730427.1487854,
+    "seen": 1789150143.6371534,
+    "ast_hash": "3c50cbd04527d7c2eccc54b1f4534f95",
+    "semantic_hash": "3c50cbd04527d7c2eccc54b1f4534f95"
+  },
+  "CLAUDE.md": {
+    "mtime": 1784086721.0,
+    "seen": 1789150143.6371539,
+    "ast_hash": "82efb97a359f5c7290bf2513d14686be",
+    "semantic_hash": "82efb97a359f5c7290bf2513d14686be"
+  },
+  "README.md": {
+    "mtime": 1774763772.0,
+    "seen": 1789150143.6371546,
+    "ast_hash": "154f891ec2d67eea3e18d7f13c587ef7",
+    "semantic_hash": "154f891ec2d67eea3e18d7f13c587ef7"
+  },
+  "docker-compose.yml": {
+    "mtime": 1774763772.0,
+    "seen": 1789150143.6371548,
+    "ast_hash": "22be5e59c8f1d4c81d3561398f405ddf",
+    "semantic_hash": "22be5e59c8f1d4c81d3561398f405ddf"
+  },
+  "index.html": {
+    "mtime": 1785550740.0,
+    "seen": 1789150143.6371553,
+    "ast_hash": "40be389590b2157a079437a9408c9394",
+    "semantic_hash": "40be389590b2157a079437a9408c9394"
+  },
+  "public/images/devidence-logo.png": {
+    "mtime": 1764893008.0,
+    "seen": 1789150143.6371572,
+    "ast_hash": "ea4785521ff0b7ad632df5b8efcdd920",
+    "semantic_hash": "ea4785521ff0b7ad632df5b8efcdd920"
+  },
+  "public/svg/github.svg": {
+    "mtime": 1764893008.0,
+    "seen": 1789150143.6371577,
+    "ast_hash": "dd306e511a8b6ceef66cf7f01eb33a80",
+    "semantic_hash": "dd306e511a8b6ceef66cf7f01eb33a80"
+  },
+  "public/svg/medium.svg": {
+    "mtime": 1764893008.0,
+    "seen": 1789150143.6371582,
+    "ast_hash": "9361fd21cbfa8b1c3e1f1070ca96a9c5",
+    "semantic_hash": "9361fd21cbfa8b1c3e1f1070ca96a9c5"
+  },
+  "public/vite.svg": {
+    "mtime": 1764893008.0,
+    "seen": 1789150143.6371586,
+    "ast_hash": "8e3a10e157f75ada21ab742c022d5430",
+    "semantic_hash": "8e3a10e157f75ada21ab742c022d5430"
+  },
+  "src/assets/svelte.svg": {
+    "mtime": 1764893008.0,
+    "seen": 1789150143.637159,
+    "ast_hash": "bf6f61806de2953fe8dfce3cf8040ec3",
+    "semantic_hash": "bf6f61806de2953fe8dfce3cf8040ec3"
+  },
+  ".devcontainer/devcontainer-lock.json": {
+    "mtime": 1785554656.0,
+    "seen": 1789150143.6371384,
+    "ast_hash": "604c02d28b68b30584b8827a126f21cc",
+    "semantic_hash": "604c02d28b68b30584b8827a126f21cc"
+  },
+  "eslint.config.js": {
+    "mtime": 1788748624.0734553,
+    "seen": 1789150143.6371415,
+    "ast_hash": "6f2d40bd40d1b1f11dbb9d54ee1583e0",
+    "semantic_hash": "6f2d40bd40d1b1f11dbb9d54ee1583e0"
+  },
+  "src/lib/SocialButton.test.js": {
+    "mtime": 1788748678.177894,
+    "seen": 1789150143.6371484,
+    "ast_hash": "cfefc3b6b714fbf22da80422ace122e5",
+    "semantic_hash": "cfefc3b6b714fbf22da80422ace122e5"
+  },
+  "src/lib/animations.test.js": {
+    "mtime": 1788748672.1982875,
+    "seen": 1789150143.63715,
+    "ast_hash": "b7a712b9966cd6f9850e92b1b4d3f29d",
+    "semantic_hash": "b7a712b9966cd6f9850e92b1b4d3f29d"
+  },
+  "vitest-setup.js": {
+    "mtime": 1788748649.427786,
+    "seen": 1789150143.6371524,
+    "ast_hash": "2c271435e60d9aeb6cd3a5e1e122a5c0",
+    "semantic_hash": "2c271435e60d9aeb6cd3a5e1e122a5c0"
+  },
+  ".github/workflows/ci.yml": {
+    "mtime": 1788749240.6889935,
+    "seen": 1789150143.6371527,
+    "ast_hash": "ca1d523068154393d543d9d12eebc3e1",
+    "semantic_hash": "ca1d523068154393d543d9d12eebc3e1"
+  },
+  "public/robots.txt": {
+    "mtime": 1785553528.0,
+    "seen": 1789150143.6371558,
+    "ast_hash": "5e0bd1c281a62a380d7a948085bfe2d1",
+    "semantic_hash": "5e0bd1c281a62a380d7a948085bfe2d1"
+  },
+  "public/favicon.svg": {
+    "mtime": 1785550722.0,
+    "seen": 1789150143.6371567,
+    "ast_hash": "9a03adc6291e1ccfd952781585ec5a03",
+    "semantic_hash": "9a03adc6291e1ccfd952781585ec5a03"
+  }
+}

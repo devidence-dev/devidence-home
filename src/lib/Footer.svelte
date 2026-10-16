@@ -7,11 +7,13 @@
   let privacyModalOpen = false;
 </script>
 
-<div class="footer fadein">
-  <a class="footer-hover spacing" href="/">Home</a>
-  <a class="footer-hover spacing" href="#" on:click|preventDefault={() => termsModalOpen = true}>Terms</a>
-  <a class="footer-hover spacing" href="#" on:click|preventDefault={() => privacyModalOpen = true}>Privacy</a>
-</div>
+<footer class="fadein flex flex-col items-center gap-9 px-4 pt-6 pb-4 text-sm text-muted">
+  <nav aria-label="Legal" class="flex gap-6">
+    <button type="button" class="rounded px-1 py-1 text-muted underline-offset-4 transition-colors hover:text-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent" on:click={() => termsModalOpen = true}>Terms</button>
+    <button type="button" class="rounded px-1 py-1 text-muted underline-offset-4 transition-colors hover:text-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent" on:click={() => privacyModalOpen = true}>Privacy</button>
+  </nav>
+  <p class="m-0 text-xs">© {new Date().getFullYear()} devidence</p>
+</footer>
 
 <Modal title="Terms of Service" isOpen={termsModalOpen} on:close={() => termsModalOpen = false}>
   <TermsContent />
@@ -20,28 +22,3 @@
 <Modal title="Privacy Policy" isOpen={privacyModalOpen} on:close={() => privacyModalOpen = false}>
   <PrivacyContent />
 </Modal>
-
-<style>
-  .footer {
-    margin: 2rem 0px 2rem 0px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-  
-  .footer-hover {
-    transition: all 0.2s ease-in-out;
-    color: #4a89dc; /* Lighter blue, as shown in the image */
-    text-decoration: none;
-  }
-  
-  .footer-hover:hover {
-    opacity: 0.8;
-    text-decoration: underline;
-  }
-  
-  .spacing {
-    font-size: 0.9rem;
-  }
-</style>

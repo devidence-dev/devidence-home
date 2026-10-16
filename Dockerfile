@@ -1,6 +1,6 @@
 # Dockerfile
 # Stage 1: Build
-FROM oven/bun:1.4.2-alpine AS builder
+FROM oven/bun:1.4.3-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -19,35 +19,33 @@ COPY --chown=appuser:appgroup package.json bun.lock ./
 # Install dependencies
 RUN bun install --frozen-lockfile
 
-# Install cwebp and ImageMagick for image and favicon conversion
+# Install ImageMagick and librsvg (SVG delegate for favicon rendering)
 USER root
-RUN apk add --no-cache libwebp-tools imagemagick
+RUN apk add --no-cache imagemagick librsvg
 USER appuser
 
 # Copy source code
 COPY --chown=appuser:appgroup . .
 
-# Convert images in public/images to webp, resized to 256x256 (2x the
-# 128px display size used for the avatar) to avoid shipping oversized assets
-RUN find public/images \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \) -exec sh -c 'for img; do cwebp -q 80 -resize 256 256 "$img" -o "${img%.*}.webp"; done' sh {} +
+# Generate optimized favicon.ico (16x16, 32x32) and PNG favicons from favicon.svg
+RUN convert -background none public/favicon.svg -resize 32x32 -define icon:auto-resize=32,16 public/favicon.ico && \
+    convert -background none public/favicon.svg -resize 180x180 public/apple-touch-icon.png && \
+    convert -background none public/favicon.svg -resize 32x32 public/favicon-32x32.png
 
-# Generate optimized favicon.ico (16x16, 32x32) and PNG favicons from devidence-logo.png
-RUN convert public/images/devidence-logo.png -resize 32x32 -define icon:auto-resize=32,16 public/favicon.ico && \
-    convert public/images/devidence-logo.png -resize 180x180 public/apple-touch-icon.png && \
-    convert public/images/devidence-logo.png -resize 32x32 public/favicon-32x32.png
+# Fail the build if any generated favicon is empty
+RUN test -s public/favicon.ico && test -s public/favicon-32x32.png && test -s public/apple-touch-icon.png
 
 # Build the application
 RUN bun run build
 
 # Stage 2: Production
-FROM caddy:2.11.4-alpine
+FROM caddy:2.11.7-alpine
 
 # Upgrade Alpine packages to get latest security patches (fixes zlib CVEs)
 RUN apk upgrade --no-cache
 
 # Copy build files from the build stage
 COPY --from=builder --chown=1000:1000 /app/dist /srv
-COPY --from=builder --chown=1000:1000 /app/public/images/*.webp /srv/images/
 COPY --from=builder --chown=1000:1000 /app/public/favicon.ico /srv/
 COPY --from=builder --chown=1000:1000 /app/public/favicon-32x32.png /srv/
 COPY --from=builder --chown=1000:1000 /app/public/apple-touch-icon.png /srv/
@@ -66,7 +64,7 @@ RUN apk add --no-cache libcap && \
 # Expose port 8080 (non-privileged)
 EXPOSE 8080
 
-# Run as caddy user (non-privileged)
-USER caddy
+# Run as non-privileged user (UID 1000, matches docker-compose.yml)
+USER 1000:1000
 
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]

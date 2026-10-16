@@ -1,31 +1,32 @@
 # Devidence Home Landing Page
 
-An elegant landing page inspired by the Galaxy theme from LinkStack, developed with Svelte and Vite. This page features a minimalist interface with an animated starry background, ideal for showcasing personal or professional links.
+Landing page for devidence, built with Svelte, Vite and Tailwind CSS v4. Dark-only glass social buttons over an animated starfield.
 
-![Devidence Preview](public/images/devidence-logo.png)
+![Devidence logo](public/images/devidence-logo-light.svg)
 
 ## 🌟 Features
 
-- Modern design inspired by the Galaxy theme from LinkStack
-- Animated starry background
-- Central profile with photo and verification
-- Custom social media buttons
-- Fully responsive
-- Parallax background effect
-- Footer links
+- Dark-only look: deep navy radial gradient with a cyan accent (tokens in `src/app.css`)
+- Animated starfield with shooting stars (`src/lib/Background.svelte`, `src/assets/styles/stars.css`)
+- Flat white moon avatar holding the devidence logo (`src/lib/Profile.svelte`)
+- Glass social buttons (Medium, GitHub)
+- Footer with Terms of Service and Privacy Policy modals
+- Fully responsive, honors `prefers-reduced-motion`
 
 ## 🛠️ Technologies Used
 
-- [Svelte](https://svelte.dev/) - Framework for building user interfaces
-- [Vite](https://vitejs.dev/) - Frontend development tool
+- [Svelte](https://svelte.dev/) 5 - Framework for building user interfaces
+- [Vite](https://vitejs.dev/) 6 - Frontend development tool
+- [Tailwind CSS v4](https://tailwindcss.com/) - Utilities, CSS-first config (`@tailwindcss/vite`)
+- [Geist](https://vercel.com/font) via `@fontsource-variable/*` - self-hosted fonts
 - [Bun](https://bun.sh/) - JavaScript runtime and package manager
 - [Caddy](https://caddyserver.com/) - Web server for production
-- Custom CSS for animations and styles
+- [Vitest](https://vitest.dev/) with [Testing Library](https://testing-library.com/docs/svelte-testing-library/intro/), [ESLint](https://eslint.org/) and svelte-check - testing and linting
 - Docker for production deployment
 
 ## 💻 Prerequisites
 
-- [Bun](https://bun.sh/) (v1.3 or higher)
+- [Bun](https://bun.sh/) (the Docker build stage uses `oven/bun:1.4.3-alpine`; the devcontainer uses `oven/bun:1.4.3-slim`)
 - [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) (for deployment)
 
 ## 🚀 Installation and Usage
@@ -56,14 +57,27 @@ An elegant landing page inspired by the Galaxy theme from LinkStack, developed w
 bun run build
 ```
 
-The generated files will be in the `dist` directory.
+The generated files will be in the `dist` directory. Preview them with `bun run preview`.
+
+### Scripts
+
+| Command | Description |
+|---|---|
+| `bun run dev` | Start the Vite dev server |
+| `bun run build` | Production build into `dist/` |
+| `bun run preview` | Serve the production build locally |
+| `bun run lint` | Run ESLint on `src/` |
+| `bun run check` | Run svelte-check |
+| `bun run test` | Run the Vitest suite once |
+| `bun run test:watch` | Run Vitest in watch mode |
 
 ## 🐳 Deployment with Docker
 
 The project includes Docker configuration with security hardening measures.
 
-1. Build and run with Docker Compose:
+1. Build and run with Docker Compose. `docker-compose.override.yml` attaches the app to an external network named `cloudflared-net` and publishes port 8080 on `127.0.0.1` only, so create that network first:
    ```bash
+   docker network create cloudflared-net
    docker-compose up -d
    ```
 
@@ -71,21 +85,19 @@ The project includes Docker configuration with security hardening measures.
 
 ### Security Features
 
-- Multi-stage build to reduce final image size
-- Run as a non-privileged user
-- Read-only file system
-- Caddy web server with hardened configuration
-- Container with limited capabilities
-- Configured HTTP security headers
+- Multi-stage build; the final image is Caddy (Alpine) with only the built files copied in
+- Run as a non-privileged user (UID 1000)
+- Read-only file system (writable `tmpfs` only for `/tmp`, `/data` and `/config`)
+- All Linux capabilities dropped, `no-new-privileges` enabled
+- Caddy web server with hardened configuration and security headers (CSP, HSTS, X-Frame-Options, COOP/CORP, Permissions-Policy)
+- Hidden files and `.json`, `.md`, `.log`, `.yml` and `.yaml` requests are denied
 
 ## 🎨 Customization
 
-To customize the page:
-
-1. Modify the texts and links in `src/lib/Profile.svelte`
-2. Change the logo in `public/images/`
-3. Adjust colors and styles in `src/app.css` and CSS files in `src/assets/styles/`
-4. Configure social buttons in `src/lib/SocialButton.svelte`
+1. Texts and links: `src/App.svelte` (profile name and description, social buttons); legal text in `src/lib/TermsContent.svelte` and `src/lib/PrivacyContent.svelte`
+2. Colors: the token block in `:root` at the top of `src/app.css` (`--bg`, `--ink`, `--accent`, `--glass`, ...). The site is dark only, so there is a single set of values.
+3. Logo and moon: `public/images/devidence-logo-light.svg`, `moon-maria.svg` and `moon-craters.svg`. The moon's base color and shadow are in the `.moon` style in `src/lib/Profile.svelte`.
+4. Favicon: replace `public/favicon.svg`. The `favicon.ico`, `favicon-32x32.png` and `apple-touch-icon.png` files are generated from it in the `Dockerfile` build step (ImageMagick and librsvg), so they exist only in the Docker image, not in the local dev server. The build fails if any of them comes out empty.
 
 ## 🔒 Security
 
@@ -102,5 +114,4 @@ Pablo Pin - devidence.dev ©
 
 ## 🙏 Acknowledgments
 
-- Inspired by the [Galaxy](https://github.com/LinkStackOrg/LinkStack/tree/main/themes/galaxy) theme from LinkStack
 - devidence.dev ©

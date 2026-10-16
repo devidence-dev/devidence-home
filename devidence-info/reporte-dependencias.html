@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<script>(function(){var t=localStorage.getItem('dv-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;})();</script>
+<title>Reporte de dependencias · devidence.dev</title>
+<link rel="icon" href="devidence-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#EDF3F8;
+  --mesh:radial-gradient(520px 380px at 0% 0%,rgba(22,203,231,.42),transparent 70%),radial-gradient(520px 420px at 100% 12%,rgba(10,132,255,.32),transparent 70%),radial-gradient(640px 420px at 35% 60%,rgba(0,91,152,.14),transparent 70%);
+  --ink:#0B1B25;--ink-2:#33475A;--muted:#56697A;--accent:#0A63C2;--file:#0A63C2;
+  --glass:rgba(255,255,255,.55);--glass-strong:rgba(255,255,255,.52);--glass-soft:rgba(255,255,255,.38);
+  --edge:rgba(255,255,255,.8);--hi:inset 0 1px 0 rgba(255,255,255,.95);
+  --shadow:0 12px 30px -18px rgba(0,70,130,.3);--shadow-lg:0 20px 44px -24px rgba(0,70,130,.35);
+  --line:rgba(11,27,37,.06);--sat:180%;
+  --tab-on-bg:rgba(255,255,255,.92);--tab-on-fg:#0B1B25;--tab-on-shadow:inset 0 1px 0 #fff,0 4px 14px -4px rgba(0,70,130,.25);
+  --count-bg:rgba(11,27,37,.07);
+  --btn-bg:rgba(255,255,255,.7);--btn-edge:rgba(255,255,255,.9);--btn-hover:#fff;
+  --dot-ring:0 0 0 4px rgba(255,255,255,.8);
+  --major:#FF6B57;--major-fg:#B93A24;--major-bg:rgba(255,99,71,.13);
+  --minor:#0A84FF;--minor-fg:#0A63C2;--minor-bg:rgba(10,132,255,.12);
+  --patch:#16CBE7;--patch-fg:#07707F;--patch-bg:rgba(22,203,231,.16);
+  --err:#FF3B30;--err-fg:#C4141F;--err-bg:rgba(255,59,48,.12);
+  --ok:#07707F;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg:#04101A;
+  --mesh:radial-gradient(520px 360px at 0% 0%,rgba(22,203,231,.34),transparent 70%),radial-gradient(540px 420px at 100% 14%,rgba(10,132,255,.4),transparent 70%),radial-gradient(560px 420px at 30% 62%,rgba(0,91,152,.32),transparent 70%);
+  --ink:#EAF2F8;--ink-2:#C9D8E2;--muted:#9FB6C6;--accent:#7FD9EA;--file:#7FD9EA;
+  --glass:rgba(255,255,255,.05);--glass-strong:rgba(255,255,255,.06);--glass-soft:rgba(255,255,255,.06);
+  --edge:rgba(255,255,255,.1);--hi:inset 0 1px 0 rgba(255,255,255,.12);
+  --shadow:none;--shadow-lg:0 24px 50px -24px rgba(0,0,0,.7);
+  --line:rgba(255,255,255,.07);--sat:160%;
+  --tab-on-bg:rgba(255,255,255,.14);--tab-on-fg:#fff;--tab-on-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 6px 18px -6px rgba(0,0,0,.6);
+  --count-bg:rgba(255,255,255,.08);
+  --btn-bg:rgba(255,255,255,.06);--btn-edge:rgba(255,255,255,.1);--btn-hover:rgba(255,255,255,.12);
+  --dot-ring:0 0 12px currentColor;
+  --major-fg:#FFA391;--major-bg:rgba(255,110,90,.18);
+  --minor-fg:#8CC8FF;--minor-bg:rgba(10,132,255,.22);
+  --patch-fg:#7AF2FF;--patch-bg:rgba(22,203,231,.18);
+  --err:#FF453A;--err-fg:#FF8A82;--err-bg:rgba(255,69,58,.16);
+  --ok:#6CF5FF;
+}}
+:root[data-theme=dark]{
+  --bg:#04101A;
+  --mesh:radial-gradient(520px 360px at 0% 0%,rgba(22,203,231,.34),transparent 70%),radial-gradient(540px 420px at 100% 14%,rgba(10,132,255,.4),transparent 70%),radial-gradient(560px 420px at 30% 62%,rgba(0,91,152,.32),transparent 70%);
+  --ink:#EAF2F8;--ink-2:#C9D8E2;--muted:#9FB6C6;--accent:#7FD9EA;--file:#7FD9EA;
+  --glass:rgba(255,255,255,.05);--glass-strong:rgba(255,255,255,.06);--glass-soft:rgba(255,255,255,.06);
+  --edge:rgba(255,255,255,.1);--hi:inset 0 1px 0 rgba(255,255,255,.12);
+  --shadow:none;--shadow-lg:0 24px 50px -24px rgba(0,0,0,.7);
+  --line:rgba(255,255,255,.07);--sat:160%;
+  --tab-on-bg:rgba(255,255,255,.14);--tab-on-fg:#fff;--tab-on-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 6px 18px -6px rgba(0,0,0,.6);
+  --count-bg:rgba(255,255,255,.08);
+  --btn-bg:rgba(255,255,255,.06);--btn-edge:rgba(255,255,255,.1);--btn-hover:rgba(255,255,255,.12);
+  --dot-ring:0 0 12px currentColor;
+  --major-fg:#FFA391;--major-bg:rgba(255,110,90,.18);
+  --minor-fg:#8CC8FF;--minor-bg:rgba(10,132,255,.22);
+  --patch-fg:#7AF2FF;--patch-bg:rgba(22,203,231,.18);
+  --err:#FF453A;--err-fg:#FF8A82;--err-bg:rgba(255,69,58,.16);
+  --ok:#6CF5FF;
+}
+.logo-dark{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .logo-light{display:none}:root:not([data-theme=light]) .logo-dark{display:block}}
+:root[data-theme=dark] .logo-light{display:none}:root[data-theme=dark] .logo-dark{display:block}
+.head-r{display:flex;align-items:center;gap:8px}
+.theme{display:flex;gap:2px;padding:3px;border-radius:999px}
+.theme button{width:30px;height:28px;display:grid;place-items:center;border:0;border-radius:999px;cursor:pointer;color:var(--muted);background:transparent}
+.theme button:hover{color:var(--ink)}
+.theme button[aria-pressed=true]{color:var(--tab-on-fg)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--mesh),var(--bg);background-attachment:fixed;color:var(--ink);font:400 14px/1.4 Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--minor)}a:hover{color:var(--accent)}
+button{font:inherit;color:inherit}
+code,.mono{font-family:'Geist Mono',ui-monospace,monospace}
+.wrap{max-width:760px;margin:0 auto;padding:28px 20px 48px}
+.glass{background:var(--glass);backdrop-filter:blur(24px) saturate(var(--sat));-webkit-backdrop-filter:blur(24px) saturate(var(--sat));border:1px solid var(--edge);box-shadow:var(--hi),var(--shadow)}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:4px 4px 0}
+header img{height:30px;display:block}
+.stamp{display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;font:400 12px 'Geist Mono',monospace;color:var(--muted)}
+.stamp i{width:6px;height:6px;border-radius:50%;background:var(--patch);box-shadow:0 0 8px var(--patch)}
+.tabs{margin-top:22px;display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--glass-soft)}
+.tab{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;border:0;border-radius:999px;cursor:pointer;font-weight:500;color:var(--muted);background:transparent}
+.tab:hover{color:var(--ink)}
+.tab span{font:500 11px 'Geist Mono',monospace;padding:2px 7px;border-radius:999px;background:var(--count-bg)}
+.tab[aria-selected=true]{font-weight:600;color:var(--tab-on-fg)}
+.tabs,.theme{position:relative}
+.tab,.theme button{position:relative;z-index:1;transition:color .3s}
+.tab span{transition:background-color .3s,color .3s}
+.pill{position:absolute;top:4px;bottom:4px;left:0;width:0;border-radius:999px;background:var(--tab-on-bg);box-shadow:var(--tab-on-shadow);transition:transform .45s cubic-bezier(.32,.72,0,1),width .45s cubic-bezier(.32,.72,0,1);pointer-events:none}
+.theme .pill{top:3px;bottom:3px}
+.no-anim .pill{transition:none}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.45s;animation-timing-function:cubic-bezier(.32,.72,0,1)}
+@media (prefers-reduced-motion:reduce){.pill{transition:none}::view-transition-old(root),::view-transition-new(root){animation:none}}
+.tab[aria-selected=true] span{color:#fff;background:var(--minor)}
+.panel{margin-top:14px;padding:24px;border-radius:26px;background:var(--glass-strong);box-shadow:var(--hi),var(--shadow-lg)}
+.eyebrow{margin:0;font:600 12px Geist,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.stats{margin-top:18px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:end}
+.big{margin:0;font:300 72px/.9 Geist,sans-serif;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.sub{margin:10px 0 0;font-size:13px;color:var(--muted)}
+.bar{display:flex;height:8px;border-radius:999px;overflow:hidden;gap:3px}
+.bar span{min-width:6px}
+.legend{margin-top:12px;display:flex;gap:18px;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink-2)}
+.legend i{width:7px;height:7px;border-radius:50%}
+.legend b{font:500 12px 'Geist Mono',monospace;color:var(--ink)}
+.summary{margin:26px 6px 12px;color:var(--muted)}
+.summary b{font-weight:600;color:var(--ink)}
+.list{display:flex;flex-direction:column;gap:10px}
+.card{border-radius:20px;overflow:hidden}
+.card summary{list-style:none;display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer}
+.card summary::-webkit-details-marker{display:none}
+.card summary .name{font:600 15px Geist,sans-serif}
+.card summary .note{font-size:12px;color:var(--muted)}
+.card summary .chev{margin-left:auto;transition:transform .2s;color:var(--muted)}
+.card[open] summary .chev{transform:rotate(180deg)}
+.dot{flex:none;width:8px;height:8px;border-radius:50%;box-shadow:var(--dot-ring)}
+.chips{display:flex;gap:6px}
+.chip{font:500 11px Geist,sans-serif;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.major{color:var(--major-fg);background:var(--major-bg)}.d-major{background:var(--major);color:var(--major)}
+.minor{color:var(--minor-fg);background:var(--minor-bg)}.d-minor{background:var(--minor);color:var(--minor)}
+.patch{color:var(--patch-fg);background:var(--patch-bg)}.d-patch{background:var(--patch);color:var(--patch)}
+.body{padding:0 18px 14px;border-top:1px solid var(--line)}
+.path{margin:10px 0 0;font:400 12px 'Geist Mono',monospace;color:var(--muted)}
+.file{margin-top:14px}
+.file>p{margin:0 0 4px;font:500 12px 'Geist Mono',monospace;color:var(--file)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto 58px 30px;align-items:center;gap:14px;padding:9px 0;border-top:1px solid var(--line)}
+.row code{font-size:13px;font-weight:500;overflow-wrap:anywhere}
+.ver{font:400 13px 'Geist Mono',monospace;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.ver b{font-weight:600;color:var(--ink)}
+.row .chip{justify-self:start}
+.copy{width:30px;height:30px;display:grid;place-items:center;border-radius:10px;cursor:pointer;color:var(--muted);background:var(--btn-bg);border:1px solid var(--btn-edge)}
+.copy:hover{color:var(--ink);background:var(--btn-hover)}
+.copy .ok{display:none;color:var(--ok)}
+.copy.done .ok{display:block}.copy.done .ic{display:none}
+.errors{margin-top:22px}
+.errors .head{display:flex;align-items:center;gap:12px;padding:14px 18px}
+.errors .head .name{font:600 15px Geist,sans-serif}
+.errors .head .chip{margin-left:auto;color:var(--err-fg);background:var(--err-bg)}
+.erow{display:grid;grid-template-columns:200px minmax(0,1fr);gap:14px;padding:10px 0;font:400 13px 'Geist Mono',monospace}
+.erow+.erow{border-top:1px solid var(--line)}
+.erow span:first-child{color:var(--muted)}
+[hidden]{display:none!important}
+@media (max-width:600px){
+  .stats{grid-template-columns:1fr;gap:18px}
+  .card summary{flex-wrap:wrap}
+  .row{grid-template-columns:minmax(0,1fr) auto;row-gap:4px}
+  .erow{grid-template-columns:1fr;gap:2px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div>
+    <img class="logo-light" src="devidence-logo-light.svg" alt="devidence.dev">
+    <img class="logo-dark" src="devidence-logo-dark.svg" alt="devidence.dev">
+  </div>
+  <div class="head-r">
+    <div class="stamp glass"><i></i>2026-10-12 09:07 · GYE</div>
+    <div class="theme glass" role="group" aria-label="Tema">
+      <span class="pill" aria-hidden="true"></span>
+      <button data-theme-set="system" title="Automático (sistema)" aria-label="Automático"><svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.25" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M7 1.75a5.25 5.25 0 0 1 0 10.5z" fill="currentColor"/></svg></button>
+      <button data-theme-set="light" title="Claro" aria-label="Claro"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="7" cy="7" r="2.6"/><path d="M7 1v1.4M7 11.6V13M1 7h1.4M11.6 7H13M2.8 2.8l1 1M10.2 10.2l1 1M2.8 11.2l1-1M10.2 3.8l1-1"/></svg></button>
+      <button data-theme-set="dark" title="Oscuro" aria-label="Oscuro"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M11.8 8.6A5 5 0 0 1 5.4 2.2a5 5 0 1 0 6.4 6.4z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="tabs glass" role="tablist">
+  <span class="pill" aria-hidden="true"></span>
+  <button class="tab" role="tab" aria-selected="true" data-tab="deps">Dependencias <span>53</span></button>
+  <button class="tab" role="tab" aria-selected="false" data-tab="images">Imágenes <span>1</span></button>
+</div>
+
+<!-- ===== DEPENDENCIAS ===== -->
+<section data-panel="deps">
+  <div class="panel glass">
+    <p class="eyebrow">Reporte de dependencias</p>
+    <div class="stats">
+      <div><p class="big">53</p><p class="sub">pendientes de 53 · 1 al día</p></div>
+      <div>
+        <!-- width = % del total de actualizaciones -->
+        <div class="bar"><span class="d-patch" style="width:7.7%"></span><span class="d-minor" style="width:88.5%"></span><span class="d-major" style="width:3.8%"></span></div>
+        <div class="legend">
+          <span><i class="d-patch"></i>patch <b>4</b></span>
+          <span><i class="d-minor"></i>minor <b>46</b></span>
+          <span><i class="d-major"></i>major <b>2</b></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="summary"><b>52 actualizaciones</b> para 52 dependencias</p>
+
+  <div class="list">
+    <details class="card glass" open>
+      <summary>
+        <span class="dot d-major"></span><span class="name">QuantWarden</span>
+        <span class="chips"><span class="chip major">2 major</span><span class="chip minor">1 minor</span><span class="chip patch">1 patch</span></span>
+        <svg class="chev" width="14" height="14" viewBox="0 0 14 14"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="body">
+        <p class="path">devidence-dev/QuantWarden</p>
+        <div class="file">
+          <p>go.mod</p>
+          <div class="row"><code>github.com/gorilla/mux</code><span class="ver">1.8.0 → <b>2.0.0</b></span><span class="chip major">major</span><button class="copy" data-copy="github.com/gorilla/mux@2.0.0" title="Copiar" aria-label="Copiar"><svg class="ic" width="14" height="14" viewBox="0 0 14 14"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 2.5h-5a2 2 0 0 0-2 2v5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><svg class="ok" width="14" height="14" viewBox="0 0 14 14"><path d="M3 7.5l2.5 2.5L11 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+          <div class="row"><code>github.com/gorilla/mux</code><span class="ver">1.8.0 → <b>1.9.0</b></span><span class="chip minor">minor</span><button class="copy" data-copy="github.com/gorilla/mux@1.9.0" title="Copiar" aria-label="Copiar"><svg class="ic" width="14" height="14" viewBox="0 0 14 14"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 2.5h-5a2 2 0 0 0-2 2v5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><svg class="ok" width="14" height="14" viewBox="0 0 14 14"><path d="M3 7.5l2.5 2.5L11 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+          <div class="row"><code>go.uber.org/zap</code><span class="ver">1.27.0 → <b>1.27.1</b></span><span class="chip patch">patch</span><button class="copy" data-copy="go.uber.org/zap@1.27.1" title="Copiar" aria-label="Copiar"><svg class="ic" width="14" height="14" viewBox="0 0 14 14"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 2.5h-5a2 2 0 0 0-2 2v5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><svg class="ok" width="14" height="14" viewBox="0 0 14 14"><path d="M3 7.5l2.5 2.5L11 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+          <div class="row"><code>golang.org/x/net</code><span class="ver">0.30.0 → <b>1.0.0</b></span><span class="chip major">major</span><button class="copy" data-copy="golang.org/x/net@1.0.0" title="Copiar" aria-label="Copiar"><svg class="ic" width="14" height="14" viewBox="0 0 14 14"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 2.5h-5a2 2 0 0 0-2 2v5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><svg class="ok" width="14" height="14" viewBox="0 0 14 14"><path d="M3 7.5l2.5 2.5L11 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card glass">
+      <summary>
+        <span class="dot d-minor"></span><span class="name">big-monorepo</span>
+        <span class="chips"><span class="chip minor">45 minor</span></span>
+        <svg class="chev" width="14" height="14" viewBox="0 0 14 14"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="body">
+        <p class="path">devidence-dev/big-monorepo</p>
+        <div class="file">
+          <p>package.json</p>
+          <div class="row"><code>pkg-00</code><span class="ver">1.0.0 → <b>1.1.0</b></span><span class="chip minor">minor</span><button class="copy" data-copy="pkg-00@1.1.0" title="Copiar" aria-label="Copiar"><svg class="ic" width="14" height="14" viewBox="0 0 14 14"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 2.5h-5a2 2 0 0 0-2 2v5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><svg class="ok" width="14" height="14" viewBox="0 0 14 14"><path d="M3 7.5l2.5 2.5L11 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+          <!-- … una .row por dependencia … -->
+        </div>
+      </div>
+    </details>
+
+    <details class="card glass">
+      <summary>
+        <span class="dot d-patch"></span><span class="name">homelab</span>
+        <span class="chips"><span class="chip patch">3 patch</span></span>
+        <svg class="chev" width="14" height="14" viewBox="0 0 14 14"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="body">
+        <p class="path">devidence-dev/homelab</p>
+        <div class="file">
+          <p>.github/workflows/ci.yml</p>
+          <div class="row"><code>actions/checkout</code><span class="ver">v4.2.0 → <b>v4.2.2</b></span><span class="chip patch">patch</span><button class="copy" data-copy="actions/checkout@v4.2.2" title="Copiar" aria-label="Copiar"><svg class="ic" width="14" height="14" viewBox="0 0 14 14"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 2.5h-5a2 2 0 0 0-2 2v5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><svg class="ok" width="14" height="14" viewBox="0 0 14 14"><path d="M3 7.5l2.5 2.5L11 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+        </div>
+        <div class="file">
+          <p>ansible/requirements.yml</p>
+          <div class="row"><code>legacy-tool</code><span class="ver">1.0.0 → <b>1.0.1</b></span><span class="chip patch">patch</span><button class="copy" data-copy="legacy-tool@1.0.1" title="Copiar" aria-label="Copiar"><svg class="ic" width="14" height="14" viewBox="0 0 14 14"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 2.5h-5a2 2 0 0 0-2 2v5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><svg class="ok" width="14" height="14" viewBox="0 0 14 14"><path d="M3 7.5l2.5 2.5L11 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card glass">
+      <summary>
+        <span class="dot d-minor"></span><span class="name">discord-tts-bot</span><span class="note">fork · solo informativo</span>
+        <span class="chips"><span class="chip minor">1 minor</span></span>
+        <svg class="chev" width="14" height="14" viewBox="0 0 14 14"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="body">
+        <p class="path">devidence-dev/discord-tts-bot</p>
+        <div class="file">
+          <p>package.json</p>
+          <div class="row"><code>discord.js</code><span class="ver">14.1.0 → <b>14.2.0</b></span><span class="chip minor">minor</span><button class="copy" data-copy="discord.js@14.2.0" title="Copiar" aria-label="Copiar"><svg class="ic" width="14" height="14" viewBox="0 0 14 14"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 2.5h-5a2 2 0 0 0-2 2v5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><svg class="ok" width="14" height="14" viewBox="0 0 14 14"><path d="M3 7.5l2.5 2.5L11 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ===== IMÁGENES ===== -->
+<section data-panel="images" hidden>
+  <div class="panel glass">
+    <p class="eyebrow">Reporte de imágenes</p>
+    <div class="stats">
+      <div><p class="big">1</p><p class="sub">pendientes de 5 · 4 al día</p></div>
+      <div>
+        <div class="bar"><span class="d-minor" style="width:100%"></span></div>
+        <div class="legend">
+          <span><i class="d-patch"></i>patch <b>0</b></span>
+          <span><i class="d-minor"></i>minor <b>1</b></span>
+          <span><i class="d-major"></i>major <b>0</b></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="summary"><b>1 actualización</b> para 1 imagen</p>
+
+  <div class="list">
+    <details class="card glass" open>
+      <summary>
+        <span class="dot d-minor"></span><span class="name">homelab</span>
+        <span class="chips"><span class="chip minor">1 minor</span></span>
+        <svg class="chev" width="14" height="14" viewBox="0 0 14 14"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <div class="body">
+        <p class="path">devidence-dev/homelab</p>
+        <div class="file">
+          <p>kubernetes/apps/immich/values.yaml</p>
+          <div class="row"><code>ghcr.io/immich-app/immich-server</code><span class="ver">v1.118.0 → <b>v1.119.0</b></span><span class="chip minor">minor</span><button class="copy" data-copy="ghcr.io/immich-app/immich-server:v1.119.0" title="Copiar" aria-label="Copiar"><svg class="ic" width="14" height="14" viewBox="0 0 14 14"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 2.5h-5a2 2 0 0 0-2 2v5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><svg class="ok" width="14" height="14" viewBox="0 0 14 14"><path d="M3 7.5l2.5 2.5L11 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ===== ERRORES (omitir el bloque si no hay) ===== -->
+<div class="card glass errors">
+  <div class="head"><span class="dot" style="background:var(--err);color:var(--err)"></span><span class="name">Errores del análisis</span><span class="chip">3 errores</span></div>
+  <div class="body">
+    <div class="erow"><span>raíz</span><span>Fatal error outside any repo</span></div>
+    <div class="erow"><span>QuantWarden</span><span>Failed to look up dependency</span></div>
+    <div class="erow"><span>QuantWarden</span><span>Fatal level problem</span></div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var EASE='cubic-bezier(.32,.72,0,1)';
+  function movePill(group,btn){
+    var p=group.querySelector('.pill');
+    p.style.width=btn.offsetWidth+'px';
+    p.style.transform='translateX('+btn.offsetLeft+'px)';
+  }
+  function initPills(){
+    document.documentElement.classList.add('no-anim');
+    var t=document.querySelector('.tab[aria-selected=true]'); if(t)movePill(t.parentNode,t);
+    var m=document.querySelector('[data-theme-set][aria-pressed=true]'); if(m)movePill(m.parentNode,m);
+    requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove('no-anim');});});
+  }
+
+  /* Tema */
+  var btns=document.querySelectorAll('[data-theme-set]');
+  function setTheme(t){
+    if(t==='light'||t==='dark'){document.documentElement.dataset.theme=t;localStorage.setItem('dv-theme',t);}
+    else{delete document.documentElement.dataset.theme;localStorage.removeItem('dv-theme');t='system';}
+    btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.themeSet===t);});
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    if(b.getAttribute('aria-pressed')==='true')return;
+    movePill(b.parentNode,b);
+    if(document.startViewTransition&&!reduce){
+      document.startViewTransition(function(){setTheme(b.dataset.themeSet);});
+    }else setTheme(b.dataset.themeSet);
+  });});
+  setTheme(localStorage.getItem('dv-theme')||'system');
+
+  /* Pestañas */
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  tabs.forEach(function(t,i){t.addEventListener('click',function(){
+    var cur=tabs.findIndex(function(x){return x.getAttribute('aria-selected')==='true';});
+    if(cur===i)return;
+    tabs.forEach(function(x){x.setAttribute('aria-selected',x===t);});
+    movePill(t.parentNode,t);
+    var next;
+    document.querySelectorAll('[data-panel]').forEach(function(p){p.hidden=p.dataset.panel!==t.dataset.tab;if(!p.hidden)next=p;});
+    if(next&&!reduce){
+      var dx=i>cur?24:-24;
+      next.animate([{opacity:0,transform:'translateX('+dx+'px)',filter:'blur(4px)'},{opacity:1,transform:'none',filter:'blur(0)'}],{duration:420,easing:EASE});
+    }
+  });});
+
+  initPills();
+  addEventListener('resize',initPills);
+  if(document.fonts)document.fonts.ready.then(initPills);
+})();
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(b.dataset.copy)}catch(e){}
+  b.classList.add('done');clearTimeout(b._t);b._t=setTimeout(()=>b.classList.remove('done'),1600);
+}));
+</script>
+</body>
+</html>

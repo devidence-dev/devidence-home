@@ -1,94 +1,79 @@
+@import "tailwindcss";
+
+/* Dark only. Same token names/values as the other devidence projects. */
 :root {
-  --bgColor: #223344;
-  --bgColor2: #090a0f;
-  --accentColor: #FFF;
-  --font: 'Karla', sans-serif;
+  color-scheme: dark;
+  --bg: #04101A;
+  --ink: #EAF2F8;
+  --ink-2: #C9D8E2;
+  --muted: #9FB6C6;
+  --accent: #7FD9EA;
+  --glass: rgba(255, 255, 255, .05);
+  --edge: rgba(255, 255, 255, .1);
+  --line: rgba(255, 255, 255, .07);
+  --glass-sat: 160%;
   --delay: .3s;
 }
 
+@theme inline {
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-glass: var(--glass);
+  --color-edge: var(--edge);
+  --color-line: var(--line);
+}
+
+@theme {
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Glass surface; opaque tinted fallback without backdrop-filter. */
+@utility glass {
+  background: var(--bg);
+  border: 1px solid var(--edge);
+  @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(24px) saturate(var(--glass-sat));
+    backdrop-filter: blur(24px) saturate(var(--glass-sat));
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/* Same body as the original galaxy look: radial gradient from the bottom,
+   relative position and the fade-in (its transform also anchors the fixed
+   star layer to the body, as before). */
 body {
   margin: 0;
-  background: linear-gradient(to bottom, var(--bgColor), var(--bgColor2));
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: white;
+  padding: 0;
   min-height: 100vh;
+  position: relative;
+  background: radial-gradient(ellipse at bottom, #223344 0%, #090a0f 100%) no-repeat;
+  background-size: cover;
+  color: var(--ink);
+  font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
-  font-family: var(--font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Parallax Background */
-.background-container {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -10;
-}
-
-.parallax-background {
-  position: absolute;
-  width: 110%;
-  height: 110%;
-  z-index: -10;
-  top: -5%;
-  left: -5%;
-}
-
-.object1 {
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  animation: stars linear infinite;
-  animation-duration: 50s;
-  will-change: transform;
-  background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 90px 40px, #fff, rgba(0, 0, 0, 0));
-  background-repeat: repeat;
-  background-size: 200px 200px;
-}
-
-.object2 {
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  animation: stars linear infinite;
-  animation-duration: 100s;
-  will-change: transform;
-  background-image: radial-gradient(1px 1px at 100px 50px, #eee, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 150px 82px, #fff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 50px 140px, #ddd, rgba(0, 0, 0, 0));
-  background-repeat: repeat;
-  background-size: 300px 300px;
-}
-
-.object3 {
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  animation: stars linear infinite;
-  animation-duration: 150s;
-  will-change: transform;
-  background-image: radial-gradient(1px 1px at 150px 150px, #ccc, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 250px 250px, #fff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 300px 300px, #fff, rgba(0, 0, 0, 0));
-  background-repeat: repeat;
-  background-size: 400px 400px;
-}
-
-@keyframes stars {
-  from {
-    transform: translateY(0px);
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    opacity: 0;
+    animation: 1s ease-out var(--delay) 1 forwards transitionAnimation;
   }
-  to {
-    transform: translateY(1000px);
-  }
+}
+
+@keyframes transitionAnimation {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 a {
@@ -96,18 +81,14 @@ a {
   text-decoration: none;
 }
 
-.badge {
-  height: 0.6em;
-  margin: 5px;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.spacing {
-  padding: 0 10px;
-}
-
 #app {
   width: 100%;
-  height: 100%;
 }
+
+/* Terms/Privacy text inside the modal (Tailwind preflight strips defaults). */
+.prose-legal { color: var(--ink-2); line-height: 1.6; }
+.prose-legal h3 { margin: 0 0 .5rem; font-size: 1.25rem; font-weight: 600; color: var(--ink); }
+.prose-legal h4 { margin: 1.25rem 0 .25rem; font-size: 1rem; font-weight: 600; color: var(--ink); }
+.prose-legal p { margin: 0 0 .75rem; }
+.prose-legal ul { margin: 0 0 .75rem; padding-left: 1.25rem; list-style: disc; }
+.prose-legal a { color: var(--accent); text-decoration: underline; }

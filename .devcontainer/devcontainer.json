@@ -2,12 +2,17 @@
   "name": "Svelte Vite DevContainer",
   "image": "oven/bun:1.4.3-slim",
   "remoteUser": "bun",
-  "forwardPorts": [5173],
+  // Publish on all host interfaces (appPort binds to 127.0.0.1 only) so other
+  // LAN devices can reach the Vite dev (5173) and preview (4173) servers.
+  "runArgs": ["-p", "0.0.0.0:5173:5173", "-p", "0.0.0.0:4173:4173"],
   "portsAttributes": {
     "5173": {
       "label": "devidence-home (Vite dev server)",
-      "onAutoForward": "notify",
-      "visibility": "public"
+      "onAutoForward": "notify"
+    },
+    "4173": {
+      "label": "devidence-home (Vite preview)",
+      "onAutoForward": "notify"
     }
   },
   "mounts": [

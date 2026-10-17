@@ -5,6 +5,10 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [tailwindcss(), svelte()],
+  // Listen on all interfaces so the devcontainer's published ports
+  // (runArgs -p) are reachable from other devices on the LAN.
+  server: { host: true },
+  preview: { host: true },
   resolve: {
     // Force the client build of Svelte components under Vitest/jsdom,
     // otherwise mount() resolves to the SSR-only server build.

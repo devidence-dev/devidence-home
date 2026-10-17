@@ -42,20 +42,21 @@
   }
 }
 
-/* Height follows content: a fixed 100% made the gradient end at the first
-   viewport and left black canvas below it on iOS (dynamic toolbar). */
+/* Solid root color: Safari 26 samples it for the status bar area. */
 html {
   background: #090a0f;
 }
 
-/* Gradient lives on a viewport-fixed layer so it also fills the areas under
-   the iOS status/toolbar (viewport-fit=cover). */
+/* Gradient on a viewport-fixed layer. Vertical radius 100% (was
+   farthest-corner ~141%) keeps the whole top edge at #090a0f, matching the
+   status bar color iOS Safari samples from html. The solid band under iOS 26
+   Safari's floating toolbar is browser UI and cannot be painted by the page. */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   z-index: -20;
-  background: radial-gradient(ellipse at bottom, #223344 0%, #090a0f 100%);
+  background: radial-gradient(ellipse 71% 100% at bottom, #223344 0%, #090a0f 100%);
 }
 
 /* Fade-in is opacity only: a transform on body would make it the containing

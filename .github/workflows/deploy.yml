@@ -26,7 +26,7 @@ on:
 jobs:
   deploy:
     name: 🚀 Build, Push & Deploy
-    uses: devidence-dev/workflows/.github/workflows/cd-build-deploy-semver.yml@v1
+    uses: devidence-dev/workflows/.github/workflows/cd-build-deploy-semver.yml@v2
     with:
       app_name: devidence-home
       values_path: kubernetes/internal-apps/devidence-home/values.yaml

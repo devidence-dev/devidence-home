@@ -29,9 +29,9 @@ export default defineConfig({
     cssMinify: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Separate vendor chunks for better caching
-          vendor: ['svelte']
+        // Separate vendor chunks for better caching (rolldown needs the function form)
+        manualChunks(id) {
+          if (id.includes('node_modules/svelte')) return 'vendor'
         }
       }
     },

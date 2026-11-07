@@ -1,6 +1,6 @@
 {
   "name": "Svelte Vite DevContainer",
-  "image": "oven/bun:1.4.3-slim",
+  "image": "oven/bun:1.4.4-slim",
   "remoteUser": "bun",
   // Publish on all host interfaces (appPort binds to 127.0.0.1 only) so other
   // LAN devices can reach the Vite dev (5173) and preview (4173) servers.
@@ -31,7 +31,7 @@
       "installOhMyZsh": "true",
       "upgradePackages": "true"
     },
-    "ghcr.io/devcontainers/features/node:1": {
+    "ghcr.io/devcontainers/features/node:2": {
       "version": "lts"
     }
   },

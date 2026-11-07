@@ -1,6 +1,6 @@
 # Dockerfile
 # Stage 1: Build
-FROM oven/bun:1.4.3-alpine AS builder
+FROM oven/bun:1.4.4-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -39,7 +39,7 @@ RUN test -s public/favicon.ico && test -s public/favicon-32x32.png && test -s pu
 RUN bun run build
 
 # Stage 2: Production
-FROM caddy:2.11.7-alpine
+FROM caddy:2.11.9-alpine
 
 # Upgrade Alpine packages to get latest security patches (fixes zlib CVEs)
 RUN apk upgrade --no-cache

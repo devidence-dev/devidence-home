@@ -26,7 +26,7 @@ Landing page for devidence, built with Svelte, Vite and Tailwind CSS v4. Dark-on
 
 ## 💻 Prerequisites
 
-- [Bun](https://bun.sh/) (the Docker build stage uses `oven/bun:1.4.3-alpine`; the devcontainer uses `oven/bun:1.4.3-slim`)
+- [Bun](https://bun.sh/) (the Docker build stage uses `oven/bun:1.4.4-alpine`; the devcontainer uses `oven/bun:1.4.4-slim`)
 - [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) (for deployment)
 
 ## 🚀 Installation and Usage

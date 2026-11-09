@@ -9,6 +9,6 @@ on:
 jobs:
   ci:
     name: 🧪 CI
-    uses: devidence-dev/workflows/.github/workflows/ci-node.yml@v1
+    uses: devidence-dev/workflows/.github/workflows/ci-node.yml@v2
     permissions:
       contents: read
